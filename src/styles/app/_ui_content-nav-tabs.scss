@@ -1,0 +1,247 @@
+/*
+-----------------------------------
+	CONTENT NAV TABS
+-----------------------------------
+*/
+
+$componentClass: ui_content-navtab;
+
+.#{$componentClass}s {
+
+	background-color: darken($link-color, 1%);
+	linear-gradient: to top right, darken($link-color, 1%), lighten(adjust-hue($link-color, -1deg), 1%);
+	min-height: 80px;
+	display: flex;
+	align-items: stretch;
+
+	transition: left 0.2s;
+
+	@media (max-width: 1023px) {
+		min-height: 70px;
+	}
+
+	@media (max-width: 767px) {
+		min-height: auto;
+	}
+
+	&.ng-hide {
+		display: none !important;
+	}
+
+	& > * {
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: stretch;
+	}
+
+	&-left {
+
+		background-color: darken($link-color, 1%);
+		linear-gradient: to top right, darken($link-color, 3%), lighten(adjust-hue($link-color, -1deg), 3%);
+		box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.1) inset, -2px 0 0 0 rgba(0, 0, 0, 0.05), -1px 0 0 0 rgba(0, 0, 0, 0.1) inset, 2px 0 0 0 rgba(0, 0, 0, 0.05);
+		margin-top: -2px;
+	}
+
+	&-actions {
+		margin-left: auto;
+		background-color: rgb(255, 255, 255);
+		box-shadow: 0 -2px 0 0 $link-color, -3px 0 0 0 rgba(0, 0, 0, 0.08);
+
+		& + & {
+			box-shadow: 0 -2px 0 0 $link-color;
+		}
+	}
+
+	&-grow {
+		flex-grow: 1;
+	}
+
+	&-right {
+		//background-color:darken(adjust-hue($link-color, -5deg),3%);
+	}
+
+	&-affix {
+
+		position: fixed;
+		z-index: 100000;
+		top: 0;
+		left: 0;
+		right: 0;
+		box-shadow: 0 1px rgba(0, 0, 0, 0.08), 0 4px rgba(0, 0, 0, 0.05);
+		min-height: 0;
+
+		&-placeholder {
+			background-color: darken($bluegrey-light, 1%);
+		}
+
+	}
+
+	.createEventView &,
+	.singleEventView &,
+	.ressourcesView &,
+	.documentView-panel & {
+		display: none !important;
+	}
+}
+
+.#{$componentClass} {
+
+	list-style: none;
+	display: flex;
+	flex-grow: 1;
+
+	&-link {
+
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: stretch;
+		text-align: center;
+		color: #fff;
+		transition: all 0.2s;
+		border: 0;
+		background-color: transparent;
+
+		padding: 15px 20px;
+
+		@media (max-width: 1023px) and (min-width: 768px) {
+			padding: 13px 15px;
+		}
+
+		@media (max-width: 767px) {
+			padding: 12px 12px;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: transparentize(darken($link-color, 15%), 0.5);
+			text-decoration: none;
+		}
+
+		.#{$componentClass}s-affix & {
+
+			padding: 15px 14px;
+			min-width: 0px;
+
+			@media (max-width: 767px) {
+				padding-left: 11px;
+				padding-right: 11px;
+			}
+
+		}
+
+		.#{$componentClass}s-actions & {
+
+			color: $link-color;
+
+			&:hover,
+			&:active,
+			&:focus {
+				background-color: lighten($bluegrey-light, 1%);
+			}
+		}
+
+	}
+
+	&.active > &-link,
+	&.active > &-link:hover,
+	&.active > &-link:focus,
+	&.active > &-link:active {
+		background-color: darken($link-color, 5%);
+		text-decoration: none;
+	}
+
+	&-icon {
+		font-size: 180%;
+		display: block;
+		margin-bottom: 5px;
+		transition: all 0.2s;
+
+		@media (max-width: 767px) {
+			font-size: 120%;
+		}
+
+		@media (max-width: 479px) {
+			margin-bottom: 0;
+		}
+
+		.#{$componentClass}s-actions & {
+			font-size: 140%;
+
+			@media (max-width: 767px) {
+				font-size: 100%;
+			}
+		}
+
+		.#{$componentClass}s-affix & {
+			font-size: 120%;
+			margin-bottom: 0;
+
+			@media (max-width: 480px) {
+				font-size: 100%;
+			}
+
+		}
+
+	}
+
+	&-title {
+		text-transform: uppercase;
+		font-size: 80%;
+
+		@media (max-width: 1023px) {
+			font-size: 70%;
+		}
+
+		@media (max-width: 767px) {
+			font-size: 60%;
+		}
+
+		@media (max-width: 479px) {
+			display: none !important;
+		}
+
+		.#{$componentClass}s-affix & {
+			display: none !important;
+		}
+	}
+
+	&-caret {
+		display: block;
+		text-align: center;
+		font-size: 85%;
+		margin-bottom: -11px;
+
+		.#{$componentClass}s-affix & {
+			display: none !important;
+		}
+	}
+
+	&--menu {
+		display: none;
+
+		.#{$componentClass}s-affix & {
+			display: block;
+		}
+
+	}
+
+	&--sidebar-right {
+
+		.#{$componentClass}-icon {
+
+			transition: transform 0.5s 0.2s;
+			transform: scaleX(-1);
+			transform-origin: 50% 50%;
+
+			.is_sidebar-right-close & {
+				transform: scaleX(1);
+			}
+
+		}
+
+	}
+
+}

@@ -1,0 +1,186 @@
+/*
+-----------------------------------
+	MEDIA
+-----------------------------------
+*/
+
+.media {
+	margin-top: 0;
+	overflow: visible;
+	display:flex;
+	align-items: stretch;
+
+	> * {
+		display: block;
+	}
+
+	&-float {
+		display: block;
+		@include clearfix();
+	}
+	
+	&-left {
+
+		padding-right: 15px;
+		
+		.media-float & {
+			float: left;
+			margin-bottom: 5px;
+		}
+
+		&-sm {
+			padding-right: 10px;
+		}
+
+		&-xs {
+			padding-right: 7px;
+		}
+	}
+
+	&-right {
+
+		padding-left: 15px;
+		
+		.media-float & {
+			float: right;
+		}
+
+		&-sm {
+			padding-left: 10px;
+		}
+
+		&-xs {
+			padding-left: 7px;
+		}
+	}
+	
+	&-middle {
+		align-self:center;
+	}
+
+	&-object {
+		max-width: 150px;
+	}
+
+	&-body {
+	
+		flex-grow:1;
+		width:auto;
+		overflow: visible;
+
+		.media-float & {
+			width: auto;
+			overflow: visible;
+			zoom: auto;
+		}
+		
+	}
+
+	&-toolbar {
+		float: right;
+	}
+
+	&-heading {
+		font-size: 110%;
+		margin: 0 0 4px 0;
+	}
+
+	&-footer {
+		margin-top: 10px;
+	}
+
+	&-venue,
+	&-details {
+		font-size: 85%;
+		display: block;
+		margin-top: 4px;
+		line-height: 1.3em;
+	}
+
+	&-includes {
+		margin: 0;
+		display: flex;
+
+		&-item {
+
+			& + &,
+			.tooltip + & {
+				margin-left: 13px;
+			}
+
+			&.is_zero {
+				color: darken($bluegrey-light, 10%);
+			}
+
+		}
+	}
+
+	&-list {
+		margin: 0;
+		padding: 0;
+
+		&-item {
+			display: flex;
+			align-items: baseline;
+
+			&-icon + &-link {
+				margin-left: 5px;
+			}
+
+			&-link {
+				flex-grow: 1;
+			}
+		}
+	}
+
+	&-description {
+		margin: 0;
+		
+		> * {
+			margin-bottom: 5px;
+		}
+
+		> *:last-child {
+			margin-bottom: 0;
+		}
+
+		br + br {
+			display: block;
+			content: '';
+			margin-bottom: 6px;
+		}
+	}
+
+	&-added-pictures {
+
+		margin-bottom: 10px;
+		
+		&-item {
+			width: 50px;
+			height: 50px;
+			float: left;
+			position: relative;
+			z-index: 1;
+			border: 0;
+			margin: 0;
+
+			&[sv-handle] {
+				cursor: move;
+			}
+			
+			.popover-content {
+				padding: 15px;
+			}
+		}
+
+		.as-sortable-placeholder {
+			margin: 0;
+			background-color: $bluegrey-light;
+			border-color: darken($bluegrey-light, 15%);
+			border-radius: 0;
+			float: left;
+			width: 50px;
+			height: 50px;
+		}
+	}
+}

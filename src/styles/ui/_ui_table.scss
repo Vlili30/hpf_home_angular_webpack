@@ -1,0 +1,158 @@
+/* 
+-----------------------------------
+	TABLES
+-----------------------------------
+*/	
+
+.table {
+
+	thead {
+
+		[st-sort] {
+
+			@include transition(all 0.2s);
+
+			cursor: pointer;
+			
+			&:hover {
+				background-color: lighten($bluegrey-light, 3%);
+			}
+
+			.th-title {
+
+				display: flex;
+				align-items: baseline;
+			
+				&:after {
+
+					@include fa-icon;
+					content: $fa-var-sort;
+					margin-left: 5px;
+					color: $link-color;
+				
+				}
+			}
+
+			&.st-sort-ascent {
+
+				.th-title:after {
+					content: $fa-var-sort-asc;
+				}
+
+			}
+
+			&.st-sort-descent {
+
+				.th-title:after {
+					content: $fa-var-sort-desc;
+				}
+
+			}
+
+		}
+
+	}
+
+	tbody {
+
+		tr {
+
+			@include transition(all 0.2s);
+
+			td {
+
+				&.td-actions {
+					width: 1%;
+					white-space: nowrap;
+				}
+
+			}
+
+		}
+	}
+
+	/* 
+	-----------------------------------
+		TABLE SIDE PADDING
+	-----------------------------------
+	*/
+
+	&-side-padding {
+
+		border-right: 0;
+		border-left: 0;
+
+		> thead > tr > th:first-child,
+		> tfoot > tr > th:first-child,
+		> tfoot > tr > td:first-child,
+		> tbody > tr > td:first-child,
+		> tbody > tr > th:first-child {
+			padding-left: 15px;
+			border-left: 0;
+		}
+
+		> thead > tr > th:last-child,
+		> tfoot > tr > th:last-child,
+		> tfoot > tr > td:last-child,
+		> tbody > tr > td:last-child {
+			padding-right: 15px;
+			border-right: 0;
+		}
+
+	}
+
+	&-toolbar {
+
+		@media(max-width: 479px) {
+			flex-direction: column;
+		}
+
+		& > * + * {
+			@media(max-width: 479px) {
+				margin-top: 10px;
+			}
+		}
+
+	}
+
+	&-lastColumn-fixed {
+
+		position: relative;
+
+		&-overflow {
+
+			@media (max-width: 979px) {
+
+				overflow-x: auto;
+				margin-right: 110px;
+				overflow-y: visible;
+				padding: 0;
+
+				thead > tr > th,
+				tbody > tr > td {
+
+					white-space: nowrap;
+
+					&:last-child {
+
+						background-color: #fff;
+						position: absolute;
+						width: 110px;
+						right: 0;
+						top: auto;
+						z-index: 10;
+						box-shadow: -1px 0 0 0 $link-color, -5px 0 0 0 transparentize(darken($bluegrey-light, 10%), 0.5);
+					}
+				}
+
+				tbody > tr:nth-of-type(odd) td {
+					background-color: $table-bg-accent;
+				}
+
+			}
+
+		}
+
+	}
+	
+}

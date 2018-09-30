@@ -1,0 +1,33 @@
+/* 
+-----------------------------------
+	POPOVER
+-----------------------------------
+*/
+
+.popover {
+	border-radius: $border-radius-base;
+	border: 0;
+	@include box-shadow(0 2px 2px rgba(0, 0, 0, 0.175));
+
+	&.top {
+		margin-top: -$popover-arrow-width+2;
+	}
+	&.right {
+		margin-left: $popover-arrow-width+2;
+	}
+	&.bottom {
+		margin-top: $popover-arrow-width+2;
+	}
+	&.left {
+		margin-left: -$popover-arrow-width+2;
+	}
+	
+	&-content {
+
+		&-section + &-section {
+			margin-top: 5px;
+		}
+
+	}
+
+}

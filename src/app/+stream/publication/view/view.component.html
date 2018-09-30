@@ -1,0 +1,279 @@
+
+<div
+	id="publication-{{publication.id}}"
+	class="ui_topic ui_fade"
+	[ngClass]="{'is_folded' : publication.isCollapsed , 'is_unfolded' :!publication.isCollapsed}"
+	>
+
+    <div class="ui_topic-timeline">
+
+        <div class="ui_topic-author">
+            <!-- <profile user="publication.createdBy" is-network-leader="publication.isLeader"></profile> -->
+        </div>
+
+        <dl class="ui_topic-includes">
+            <dt class="ui_topic-includes-title">Topic includes :</dt>
+
+            <dd *ngIf="publication.type == 'DISCUSSION'" class="ui_badge
+            ui_badge-discussion" tooltip-append-to-body="true" tooltip-placement="right" attr.uib-tooltip="Topic is a discussion">
+                <span class="ui_badge-title">Topic is a discussion</span>
+                <i class="ui_badge-icon fa fa-quote-left"></i>
+            </dd>
+
+            <dd *ngIf="publication.type == 'EVENT'" class="ui_badge
+            ui_badge-event" tooltip-append-to-body="true" tooltip-placement="right" attr.uib-tooltip="Topic is an event">
+                <span class="ui_badge-title">Topic is an event</span>
+                <i class="ui_badge-icon fa fa-calendar"></i>
+            </dd>
+
+            <dd *ngIf="publication.poll?.choices.length > 0" class="ui_badge ui_badge-poll" tooltip-append-to-body="true" tooltip-placement="right" attr.uib-tooltip="Topic contains a poll">
+                <span class="ui_badge-title">Topic contains a poll</span>
+                <i class="ui_badge-icon fa fa-tasks"></i>
+            </dd>
+
+            <dd *ngIf="publication.documents.length > 0" class="ui_badge
+            ui_badge-resources" tooltip-append-to-body="true" tooltip-placement="right" attr.uib-tooltip="Topic contains {{publication.documents}} document resource(s)">
+                <span class="ui_badge-number">{{publication.documents.length }}</span>
+                <span class="ui_badge-title">document resources</span>
+                <i class="ui_badge-icon fa fa-file"></i>
+            </dd>
+
+            <dd *ngIf="publication.links.length > 0" class="ui_badge
+            ui_badge-resources"
+                tooltip-append-to-body="true" tooltip-placement="right"
+                attr.uib-tooltip="Topic contains {{publication.links}} link resource
+                (s)">
+                <span class="ui_badge-number">{{publication.links.length }}</span>
+                <span class="ui_badge-title">link resources</span>
+                <i class="ui_badge-icon fa fa-link"></i>
+            </dd>
+
+        </dl>
+
+    </div>
+
+    <div class="ui_topic-body">
+
+        <div class="ui_topic-pin" *ngIf="publication.pin == 1">
+            <div class="ui_badge ui_badge-pin" attr.uib-tooltip="Topic is pinned">
+                <i class="ui_badge-title">pinned</i>
+                <i class="ui_badge-icon fa fa-thumb-tack"></i>
+            </div>
+        </div>
+
+        <!-- TOPIC TOP BAR -->
+
+        <div class="ui_topic-navbar">
+            <div class="ui_topic-navbar-left">
+
+                <div class="ui_topic-navbar-avatar">
+                    {{publication.createdBy.fullName}}
+                    <!-- <profile user="publication.createdBy" is-network-leader="publication.isLeader"></profile> -->
+                </div>
+
+                <p class="ui_topic-posted">
+                    by
+                    {{publication.createdBy.fullName}}
+                    <!-- <profile view-type="'minimal'" user="publication.createdBy" is-network-leader="publication.isLeader"></profile> -->
+                    <span class="ui_topic-posted-on">
+                        <span *ngIf="publication.updatedOn != publication.createdOn">
+                            {{publication.updatedOn | date:'EEEE MMMM d, h:mm a'}}
+                            <!-- <sante-datetime date="publication.updatedOn"></sante-datetime> -->
+                            <span class="ui_topic-posted-createdOn">
+                                ({{publication.createdOn | date:'MM/dd h:mm a'}})
+                            	<!-- Created <sante-datetime date="publication.createdOn"></sante-datetime> -->
+                            </span>
+                        </span>
+                        <span *ngIf="publication.updatedOn == publication.createdOn">
+                            {{publication.createdOn | date:'EEEE MMMM d, h:mm a'}}
+                            <!-- <sante-datetime date="publication.createdOn"></sante-datetime> -->
+                        </span>
+                    </span>
+
+                </p>
+            </div>
+            <div class="ui_topic-navbar-right">
+
+                <div class="btn-toolbar" *ngIf="publication.pin == 1">
+
+                    <a
+                    class="btn btn-link"
+                    (click)="publication.isCollapsed = !publication.isCollapsed"
+                    [ngClass]="{'btn-unfold-topic' : publication.isCollapsed , 'btn-fold-topic' :!publication.isCollapsed}">
+                        <span class="btn-title">{{publication.isCollapsed === true ? "Open topic" : "Close topic"}}</span>
+                        <i class="btn-icon fa" [ngClass]="{'fa-expand' : publication.isCollapsed , 'fa-compress' :!publication.isCollapsed}"></i>
+                    </a>
+                </div>
+
+                <div class="btn-toolbar">
+                    <a href="#" class="btn btn-link" attr.uib-tooltip="Add a comment" (click)="scrollFocusToInput('publication-comment-form-input-'+topicIndex)">
+                        <span class="btn-title">{{ publication.comments.length }}</span>
+                        <i class="btn-icon fa fa-comment"></i>
+                    </a>
+                    <a href="#" class="btn btn-link btn-toggle-endorse"
+                       attr.uib-tooltip="{{ publication.hasEndorsed ? 'Remove endorsement' : 'Add endorsement'}}"
+                       (click)="toggleEndorse(topic)"
+                       [ngClass]="{'disabled' : publication.isToggleEndorseActive,'has_unendorsed' : publication.hasEndorsed && publication.isToggleEndorseActive, 'has_endorsed' : !publication.hasEndorsed && publication.isToggleEndorseActive}">
+                        <span class="btn-title">{{ publication.nbEndorsements}}</span>
+                        <i class="btn-icon fa" [ngClass]="(publication.hasEndorsed) ? 'fa-star' : 'fa-star-o'"></i>
+                    </a>
+                </div>
+
+                <div class="btn-toolbar">
+
+                    <div class="ui_dropdown">
+                        <a class="btn btn-link" id="more-publication-{{$index}}-dropdown" role="button">
+                            <span class="btn-title">More</span>
+                            <i class="btn-icon fa fa-angle-down"></i>
+                        </a>
+
+                        <ul class="ui_dropdown-menu dropdown-menu-right" role="menu" [attr.aria-labelledby]="'more-publication-'+$index+'-dropdown'">
+                            <li class="ui_dropdown-menu-item">
+                                <a href="" (click)="toggleEndorse(topic)" class="ui_menu-item">
+                                    <i class="fa ui_menu-item-icon" [ngClass]="(publication.hasEndorsed) ? 'fa-star' : 'fa-star-o'" aria-hidden="true"></i>
+                                    <span class="ui_menu-item-title">
+                                        <span *ngIf="!publication.hasEndorsed">Endorse topic</span>
+                                        <span *ngIf="publication.hasEndorsed">Unendorse topic</span>
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li class="ui_dropdown-menu-item">
+                                <a *ngIf="publication.hasSubscribed" class="ui_menu-item" (click)="toggleSubscription(publication)">
+                                    <i class="fa fa-bell-slash ui_menu-item-icon" aria-hidden="true"></i>
+                                    <span class="ui_menu-item-title">Unfollow</span>
+                                </a>
+                                <a *ngIf="!publication.hasSubscribed" class="ui_menu-item" (click)="toggleSubscription(publication)">
+                                    <i class="fa fa-bell ui_menu-item-icon" aria-hidden="true"></i>
+                                    <span class="ui_menu-item-title">Follow</span>
+                                </a>
+                            </li>
+
+                            <li class="ui_dropdown-menu-item">
+                                <a class="ui_menu-item" href="" (click)="publication.mode='report'">
+                                    <i class="fa fa-bullhorn ui_menu-item-icon" aria-hidden="true"></i>
+                                    <span class="ui_menu-item-title">Report</span>
+                                </a>
+                            </li>
+                            <!-- <li class="ui_dropdown-menu-item">
+                                <a class="ui_menu-item" href="" clipboard on-copied="ifCtrl.confirmCopy();" text="'<?=$this->digitServerUrl() . $this->url('item/item');?>/' + topic.id ">
+                                    <i class="fa fa-link ui_menu-item-icon" aria-hidden="true"></i>
+                                    <span class="ui_menu-item-title">Get direct link</span>
+                                </a>
+                            </li> -->
+
+                            <li role="separator" class="divider" *ngIf="publication.isPinnable || publication.isEditable || publication.canDelete || publication.canCopy"></li>
+                            <li class="ui_dropdown-menu-item" *ngIf="publication.isPinnable">
+                                <a *ngIf="publication.pin == 0" class="ui_menu-item" (click)="togglePin(publication)">
+                                    <i class="fa fa-flag ui_menu-item-icon" aria-hidden="true"></i>
+                                    <span class="ui_menu-item-title">Pin this topic</span>
+                                </a>
+                                <a *ngIf="publication.pin == 1" class="ui_menu-item" (click)="togglePin(publication)">
+                                    <i class="fa fa-flag-o ui_menu-item-icon" aria-hidden="true"></i>
+                                    <span class="ui_menu-item-title">Unpin this topic</span>
+                                </a>
+                            </li>
+
+                            <li class="ui_dropdown-menu-item" *ngIf="publication.isEditable">
+                                <a class="ui_menu-item" (click)="updateItem(publication, $index);">
+                                    <i class="fa fa-pencil ui_menu-item-icon" aria-hidden="true"></i>
+                                    <span class="ui_menu-item-title">Edit this topic </span>
+                                </a>
+                            </li>
+
+                            <li class="ui_dropdown-menu-item" *ngIf="publication.canCopy">
+                                <a class="ui_menu-item" (click)="publication.mode='copy'">
+                                    <i class="fa fa-files-o  ui_menu-item-icon" aria-hidden="true"></i>
+                                    <span class="ui_menu-item-title">Copy this topic</span>
+                                </a>
+                            </li>
+
+                            <li class="ui_dropdown-menu-item" *ngIf="publication.canDelete">
+                                <a class="ui_menu-item" (click)="publication.mode='delete'">
+                                    <i class="fa fa-trash ui_menu-item-icon" aria-hidden="true"></i>
+                                    <span class="ui_menu-item-title">Delete this topic</span>
+                                </a>
+                            </li>
+                            <li class="ui_dropdown-menu-item" *ngIf="publication.turnpubliclink">
+                                <a class="ui_menu-item" href="{{baseUrl}}item/turnpublic/{{publication.id }}">
+                                    <i class="fa fa-exchange ui_menu-item-icon" aria-hidden="true"></i>
+                                    <span class="ui_menu-item-title">Turn public</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <!-- TOPIC ITEM START DISCUSSION / EVENT -->
+
+        <div class="ui_topic-item is_first " [ngClass]="{'ui_topic-item-event': publication.type == 'EVENT' , 'ui_topic-item-discussion': publication.type == 'DISCUSSION'}">
+
+            <div class="ui_topic-item-badge" ng-switch="publication.type">
+
+                <p ng-switch-when="DISCUSSION" class="ui_badge
+                ui_badge-discussion" tooltip-placement="right" attr.uib-tooltip="This topic is a discussion">
+                    <span class="ui_badge-title">This topic is a discussion</span>
+                    <i class="ui_badge-icon fa fa-quote-left"></i>
+                </p>
+
+                <p ng-switch-when="EVENT" class="ui_badge ui_badge-event"
+                   tooltip-placement="right" attr.uib-tooltip="This topic is an event">
+                    <span class="ui_badge-title">This topic is an event</span>
+                    <i class="ui_badge-icon fa fa-calendar"></i>
+                </p>
+
+            </div>
+
+            <div class="ui_topic-item-media ui_topic-item-media-stacked">
+
+                <div class="media">
+
+                    <div class="media-left" *ngIf="publication.pictures.length > 0">
+                        <div class="media-object">
+                            <a class="ui_thumbnail" (click)="openLightboxModal(publication.pictures)">
+                                <img class="ui_thumbnail-img" src="{{ publication.pictures[0].content }}" alt="{{ publication.pictures[0].label }}">
+                                <div class="ui_thumbnail-corner-badge">
+                                    <span class="ui_badge ui_badge-xs ui_badge-link">{{ publication.pictures.length }}</span>
+                                </div>
+
+                                <div class="ui_thumbnail-center-badge">
+                                    <span class="ui_badge ui_badge-link"><i class="fa fa-expand"></i></span>
+                                </div>
+
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="media-body">
+
+                        <h4 class="media-heading">
+                            <strong class="media-title" ng-bind-html="publication.label | wordBreak:20"></strong>
+                            <small class="media-venue" *ngIf="publication.type == 'EVENT'">
+                                <time class="media-venue-date">{{ publication.startEndOn.dateString }}</time>
+                                <span class="media-venue-location" *ngIf="publication.location">({{ publication.location }})</span>
+                            </small>
+                        </h4>
+
+                        <div class="media-description" [innerHTML]="publication.description"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div uib-collapse="publication.isCollapsed">
+            <publication-poll *ngIf="publication.poll" [poll]="publication.poll" [publicationId]="publication.id" (voted)="onVoted($event)"></publication-poll>
+
+            <!-- <?php echo $this->partial('partial/angular-item-poll'); ?>
+            <?php echo $this->partial('partial/angular-item-resource'); ?>
+            <?php echo $this->partial('partial/angular-comments'); ?> -->
+        </div>
+    </div>
+</div>

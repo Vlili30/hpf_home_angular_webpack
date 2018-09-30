@@ -1,0 +1,304 @@
+/*
+-----------------------------------
+	RESOURCES
+-----------------------------------
+*/
+
+.ui_folders-view {
+
+	display: flex;
+	align-items: stretch;
+
+	border-bottom: 1px solid $bluegrey-light;
+
+	.alert {
+		border-radius: 0;
+	}
+
+}
+
+.col-tree-view {
+
+	position: relative;
+	z-index: 1;
+	max-width: 420px;
+	min-width: 420px;
+	margin-left: 0;
+	@include transition(margin 0.3s 0s, min-width 0.3s 0s, max-width 0.3s 0s);
+
+	.is_col-tree-view-full & {
+		min-width: 100%;
+		max-width: 100%;
+	}
+
+	.is_col-files-view-full & {
+		max-width: 0;
+		min-width: 0;
+	}
+
+	.is_col-files-view-active & {
+
+		@media (max-width: 979px) {
+			min-width: 100%;
+		}
+	}
+
+	@media (min-width: 980px) {
+
+		.is_col-tree-view-closed & {
+			max-width: 0;
+			min-width: 0;
+			@include transition(margin 0.3s 0.4s, min-width 0.3s 0.4s);
+		}
+	}
+
+	@media (max-width: 979px) {
+		flex-basis: 100%;
+		width: auto;
+		min-width: 100%;
+		max-width: 100%;
+	}
+
+	&-inner {
+
+		@media (min-width: 980px) {
+			min-width: 300px;
+		}
+	}
+
+}
+
+.col-files-view {
+	@include transition(margin 0.3s 0s, min-width 0.3s 0s, max-width 0.3s 0s);
+	border-left: 1px solid $bluegrey-light;
+	position: relative;
+	z-index: 2;
+	min-width: 0;
+	flex-grow: 1;
+	background-color: #fff;
+
+	.is_col-tree-view-full & {
+		min-width: 100%;
+	}
+
+	.is_col-files-view-full & {
+		min-width: 100%;
+	}
+
+	@media (max-width: 979px) {
+		flex-basis: 100%;
+		width: 0;
+		min-width: 100%;
+		max-width: 100%;
+
+		margin-left: 0;
+
+		.is_col-files-view-active & {
+			margin-left: -100%;
+			margin-right: 0;
+		}
+	}
+
+	.is_col-tree-view-closed & {
+		@include transition(margin 0.3s 0s);
+	}
+
+	.btn-activate-col-files-view {
+
+		display: none;
+
+		@media (max-width: 979px) {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			width: 12.5%;
+			border-radius: 0;
+			vertical-align: top;
+			color: $link-color;
+			display: block;
+			z-index: 999;
+			background-color: transparentize($link-color, 0.8);
+			box-shadow: 3px 0 0 0 rgba(0, 0, 0, 0.03) inset;
+			border: 0;
+
+			@include transition(all 0.3s 0s);
+
+			&:active,
+			&:hover,
+			&:focus {
+				color: $link-color;
+			}
+
+			@at_root .is_col-files-view-active .btn-activate-col-files-view {
+				margin-left: -12.5%;
+				box-shadow: -3px 0 0 0 rgba(0, 0, 0, 0.03) inset;
+			}
+
+			.btn-icon {
+
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				padding: 18px;
+				background-color: $link-color;
+				color: #fff;
+
+				@at_root .is_col-files-view-active .btn-activate-col-files-view .btn-icon {
+					transform: rotate(180deg);
+				}
+			}
+		}
+
+	}
+
+}
+
+.files-view {
+
+	&-title {
+		display: flex;
+		padding: 8.5px 0;
+
+		&-text {
+			margin-right: 10px;
+		}
+	}
+
+	&-toolbar {
+		display: flex;
+	}
+
+	&-page-length {
+		min-width: 150px;
+		max-width: 160px;
+
+		@media(max-width: 479px) {
+			max-width: none;
+		}
+	}
+
+	&-global-search {
+		min-width: 130px;
+		max-width: 300px;
+
+		@media(max-width: 479px) {
+			max-width: none;
+		}
+	}
+
+	&-table {
+		margin-bottom: 0;
+	}
+
+	.panel .panel-footer {
+		border-bottom: 0;
+
+		.panel-footer-pagination {
+			flex-grow: 0;
+		}
+	}
+
+}
+
+.editDocumentPath {
+
+	margin-bottom: 0;
+
+	&.is_updated {
+		animation: flash 1.0s;
+	}
+}
+
+/*
+-----------------------------------
+	EDIT DOCUMENT
+-----------------------------------
+*/
+
+.documentView {
+
+	&-panel {
+		position: relative;
+	}
+
+	&-tab {
+
+		margin: 0;
+		position: relative;
+		z-index: 10;
+		border-bottom: 1px solid $bluegrey-light;
+
+		> li {
+
+			+ li {
+				margin-left: 5px;
+			}
+
+			& > a,
+			&.active > a {
+
+				padding: 20px 15px;
+
+				border-radius: 0;
+				position: relative;
+				color: $link-color;
+				background-color: transparent;
+				display: flex;
+
+				@media(max-width: 767px) {
+					padding: 20px 10px;
+				}
+
+				&:after {
+					content: '';
+					display: block;
+					border-bottom: 3px solid $link-color;
+					bottom: 0;
+					left: 0;
+					width: 0;
+					position: absolute;
+					margin-bottom: -2px;
+					@include transition(width .2s 0s ease-in-out);
+				}
+
+				&:hover,
+				&:focus {
+
+					background-color: transparent;
+					color: $link-color;
+
+					&:after {
+						width: 100%;
+
+					}
+				}
+
+				.badge {
+					color: #fff;
+					background-color: $bluegrey;
+				}
+
+			}
+
+			&.active > a {
+
+				.badge {
+					color: #fff;
+					background-color: $link-color;
+				}
+
+				&:after {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+}
+
+.ui_document-comments-list .ui_comment {
+	margin-bottom: 10px;
+}

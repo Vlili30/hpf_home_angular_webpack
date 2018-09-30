@@ -1,0 +1,21 @@
+/* 
+-----------------------------------
+	USERS LIST
+-----------------------------------
+*/
+
+.ui_users-list {
+
+	&-filter-input {
+		min-width: 110px;
+	}
+
+	&-sortBy {
+
+		.selected {
+			font-weight: bold;
+		}
+
+	}
+	
+}

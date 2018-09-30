@@ -1,0 +1,52 @@
+<div id="ui_top-navbar" class="ui_top-navbar">
+
+    <a role="button" class="ui_top-navbar-sidebar-btn btn btn-skyblue" (click)="toggleLeftSidebar()">
+        <em class="sr-only">Close/open side left nav</em>
+        <span class="ui_icon-bar"></span>
+        <span class="ui_icon-bar"></span>
+        <span class="ui_icon-bar"></span>
+    </a>
+
+    <div class="ui_top-navbar-heading">
+        <div class="ui_top-navbar-heading-logo">
+            <img src="https://ec.europa.eu/info/sites/info/files/ec-logo-horiz-web_en.jpg" alt="European commission logo" width="150">
+        </div>
+        <h2 id="ui_title" class="ui_top-navbar-heading-title">
+            <a routerLink="/home">
+                <strong>Health Policy Platform</strong>
+                <span></span>
+            </a>
+        </h2>
+    </div>
+
+    <nav id="ui_user-nav" class="ui_top-navbar-nav">
+        <ul>
+            <li class="ui_top-navbar-nav-item  hidden-sm hidden-xs">
+                <a href="<?php echo $this->url('subscription/streamview');?>"  class="ui_top-navbar-nav-item-link">
+                    <i class="ui_top-navbar-nav-item-link-icon fa fa-bell" aria-hidden="true"></i>
+                    <span class="ui_top-navbar-nav-item-link-title hidden-xs">Subscriptions</span>
+                </a>
+            </li>
+            <li class="ui_top-navbar-nav-item">
+                <a href="<?php echo $this->url('profile/update');?>"  class="ui_top-navbar-nav-item-link">
+                    <i class="ui_top-navbar-nav-item-link-icon fa fa-user"></i>
+                    <span class="sr-only">User profile of </span>
+                    <span class="ui_top-navbar-nav-item-link-title hidden-xs">Vincent Lisoir</span>
+                </a>
+            </li>
+            <li class="ui_top-navbar-nav-item">
+                <a href="<?php echo $this->url('cas/logout');?>"  class="ui_top-navbar-nav-item-link">
+                    <i class="ui_top-navbar-nav-item-link-icon fa fa-power-off" aria-hidden="true"></i>
+                    <span class="ui_top-navbar-nav-item-link-title hidden-xs">Logout</span>
+                </a>
+            </li>
+            <li class="ui_top-navbar-nav-item">
+                <a href="<?php echo $this->url('cas/login');?>"  class="ui_top-navbar-nav-item-link">
+                    <i class="ui_top-navbar-nav-item-link-icon fa fa-power-off" aria-hidden="true"></i>
+                    <span class="ui_top-navbar-nav-item-link-title hidden-xs">Login</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+</div>

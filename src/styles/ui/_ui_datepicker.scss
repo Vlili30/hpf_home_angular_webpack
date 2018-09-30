@@ -1,0 +1,164 @@
+/* 
+-----------------------------------
+	DATE PICKER
+-----------------------------------
+*/
+
+.uib-datepicker, .uib-datepicker-popup {
+
+	table {
+		width: 100%;
+	}
+
+	& table {
+	
+		thead {
+			background-color: darken($event-color, 0%);
+			color: #fff;
+			
+			
+			th {
+				padding: 3px 5px;
+				font-weight: normal;
+				
+				.btn {
+
+					@include transition(all 0.2s);
+
+					color: #fff;
+					font-weight: normal;
+					border-color: transparent;
+					border-radius: 2px;
+				
+					&,
+					&:active,
+					&.active,
+					&[disabled],
+					fieldset[disabled] & {
+						background-color: transparent;
+					}
+					&:active,
+					&.active,
+					&.is_active {
+						outline: 0;
+						background-color: darken($event-color, 5%);
+						color: #fff;
+						&:focus {
+							background-color: darken($event-color, 5%);
+						}
+					}
+					&:hover,
+					&:focus {
+						outline: 0;
+						color: #fff;
+						text-decoration: none;
+						background-color: darken($event-color, 5%);
+					}
+
+					strong {
+						font-weight: normal;
+					}
+				}
+			}
+		}
+
+		tbody {
+			background-color: white;
+			
+			td {
+				padding: 2px;
+				font-weight: normal;
+				
+				.btn {
+					border: 0;
+					border-radius: 50px;
+					
+					&-default {
+						color: $text-color;
+						background-color: transparent;
+						
+						&.active,
+						&:active {
+							color: #fff;
+							background-color: $event-color;
+							box-shadow: inset 0 0 0 2px $event-color;
+
+							.text-info {
+								color: #fff;
+							}
+						}
+					}
+
+					&.btn-info {
+						color: white;
+						background-color: $event-color;
+						
+						.text-info {
+							color: white;
+						}
+
+					}
+
+					.text-muted {
+						color: lighten($text-color, 35%);
+					}
+
+					.text-info {
+						color: $event-color;
+					}
+
+				}
+
+				&.has_event {
+
+					.btn {
+						box-shadow: inset 0 0 0 2px $event-color;
+
+						&.active {
+							box-shadow: inset 0 0 0 2px $event-color; 
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		tr {
+
+			td, th {
+
+				&:first-child {
+					padding-left: 15px;
+				}
+
+				&:last-child {
+					padding-right: 15px;
+				}
+
+			}
+
+			&:first-child {
+				td, th {
+					padding-top: 10px;
+				}
+			}
+
+			&:last-child {
+				td, th {
+					padding-bottom: 10px;
+				}
+			}
+
+		}
+
+	}
+	
+}
+
+.uib-datepicker-popup {
+	padding-top: 0;
+}
+

@@ -1,0 +1,28 @@
+/* 
+-----------------------------------
+	SORTABLE
+-----------------------------------
+*/
+
+.ui_sortable {
+
+  &-item {
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+    border-top: 1px solid $bluegrey-light;
+
+    &-handle {
+      padding: 15px;
+      border-radius: 0;
+    }
+
+    &-body {
+      padding: 15px;
+    }
+
+    &-actions {
+      padding-right: 15px;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+/* 
+-----------------------------------
+	DROPZONE
+-----------------------------------
+*/
+
+.dropzone {
+  padding: 25px 15px;
+  border: 1px dashed $bluegrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: $link-color;
+    color: $link-color;
+    cursor: pointer;
+  }
+
+  &-icon {
+    padding-right: 15px;
+  }
+}

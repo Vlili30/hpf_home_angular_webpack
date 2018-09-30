@@ -1,0 +1,18 @@
+/* 
+-----------------------------------
+	PROGRESS BAR
+-----------------------------------
+*/
+
+.progress {
+	border-radius: 50px;
+	background-color: $bluegrey;
+	box-shadow: none;
+	
+	&-bar {
+		padding: 0 10px;
+		box-shadow: none;
+		background-color: $link-color;
+	}
+
+}

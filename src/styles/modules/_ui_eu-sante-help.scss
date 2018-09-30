@@ -1,0 +1,91 @@
+/* 
+-----------------------------------
+	INLINE DOCUMENTATION
+-----------------------------------
+*/
+
+.ui_eu-sante-help {
+
+  &-player {
+
+    position: fixed;
+    margin: 10px;
+    z-index: 1000002;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px;
+    background-color: #fff;
+    display: none;
+
+    @media (max-width: 767px) {
+      padding: 6px;
+      font-size: 90%;
+    }
+
+    &.is_active {
+      display: block;
+    }
+
+    &-container {
+
+      @media (max-width: 767px) {
+        padding: 0;
+      }
+
+    }
+
+    &-content {
+      overflow-y: auto;
+      max-height: 35px;
+      display: inline-block;
+      padding-right: 15px;
+    }
+
+    &-media {
+
+      .media-left {
+        white-space: nowrap;
+
+        @media (max-width: 767px) {
+          padding-right: 10px;
+        }
+      }
+
+      .media-right {
+        @media (max-width: 767px) {
+          padding-left: 10px;
+        }
+      }
+
+    }
+
+    &-btn {
+
+      @media (max-width: 767px) {
+        padding: 4px 8px;
+      }
+
+    }
+  }
+
+  &-container {
+
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 50000px transparentize(darken($link-color, 20%), 0.2);
+
+    &:before {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      background-color: transparent;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

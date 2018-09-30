@@ -1,0 +1,99 @@
+/*
+-----------------------------------
+	BADGES
+-----------------------------------
+*/
+
+.ui_badge {
+	min-width: 28px;
+	min-height: 28px;
+	border-radius: 60px;
+	vertical-align: middle;
+	line-height: 28px;
+	font-weight: normal;
+	text-align: center;
+	display: block;
+
+	&-xs {
+		min-width: 18px;
+		min-height: 18px;
+		line-height: 16px;
+		font-size: 12px;
+		padding: 1px 3px;
+	}
+
+	&-sm {
+		min-width: 23px;
+		min-height: 23px;
+		line-height: 21px;
+		font-size: 12px;
+		padding: 2px 5px;
+	}
+
+	&-lg {
+		min-width: 38px;
+		min-height: 38px;
+		line-height: 32px;
+		font-size: 16px;
+	}
+
+	&[data-toggle="tooltip"],
+	&[uib-tooltip] {
+		cursor: help;
+	}
+
+	&-title {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
+	}
+
+	&-number {
+		font-size: 85%;
+		margin-right: 2px;
+	}
+
+	&-event {
+		@include badge-variant($event-color);
+	}
+
+	&-resources {
+		@include badge-variant($resources-color);
+	}
+
+	&-poll {
+		@include badge-variant($poll-color);
+	}
+
+	&-link {
+		@include badge-variant($link-color);
+	}
+
+	&-discussion,
+	&-comment {
+		@include badge-variant($discussion-color);
+	}
+
+	&-network-leader {
+		@include badge-variant($link-color);
+	}
+
+	/*
+	-----------------------------------
+		TOOLTIP FOR BADGES
+	-----------------------------------
+	*/
+
+	.ui_topic-item-badge & + .tooltip,
+	.ui_topic-pin & + .tooltip,
+	.ui_topic-timeline & + .tooltip {
+		min-width: 150px;
+	}
+
+
+}

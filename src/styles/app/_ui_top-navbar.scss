@@ -1,0 +1,172 @@
+/* 
+-----------------------------------
+	TOP NAVBAR
+-----------------------------------
+*/
+
+.ui_top-navbar {
+	padding: 8px 8px 8px 15px;
+	display: flex;
+	align-items: flex-end;
+	
+	@include clearfix();
+
+	&-sidebar-btn {
+
+		padding: 1px 10px;
+		margin: 0 0 0 -15px;
+		//border-right: 1px solid $link-color;
+		display: inline-block;
+		vertical-align: top;
+		width: 50px;
+		font-size: 120%;
+		border-radius: 0;
+
+		.ui_icon-bar {
+			background-color: $link-color;
+			display: block;
+			height: 4px;
+			width: 26px;
+			border-radius: 1px;
+			margin: 5px auto;
+			position: relative;
+			top: 0;
+		}
+
+	}
+
+	&-heading {
+
+		display: flex;
+		align-items: flex-end;
+
+		&-logo {
+			margin-right: 10px;
+			overflow: hidden;
+			width: 145px;
+			margin-bottom: 4px;
+			margin-top: -4px;
+
+			@media (max-width: 767px) {
+				width: 50px;
+				margin-right: 5px;
+			}
+
+			img {
+
+				@media (max-width: 767px) {
+					width: 100px;
+				}
+			}
+		}
+
+		&-title {
+			font-size: 140%;
+			color: lighten($bluegrey, 5%);
+			margin: 0;
+			border-left: 1px solid lighten($text-color, 20%);
+			padding: 2px 10px 1px 10px;
+			line-height: 26px;
+			text-transform: uppercase;
+
+			@media (max-width: 767px) {
+				font-size: 90%;
+				padding: 0px 5px 0px 0px;
+				line-height: 16px;
+				margin-bottom: 4px;
+				border: 0;
+			}
+
+			strong {
+				font-weight: normal;
+			}
+		}
+		
+	}
+
+	&-nav {
+
+		margin-left: auto;
+		padding-bottom: 1px;
+
+		@media (max-width: 767px) {
+			margin-right: -5px;
+		}
+
+		> ul {
+			padding: 0;
+			margin: 0;
+
+			@media (max-width: 1023px) {
+				white-space: nowrap;
+			}
+		}
+
+		&-item {
+			display: inline-block;
+			margin: 0;
+			vertical-align: middle;
+
+			& + & {
+				margin-left: -3px;
+			}
+
+			&-link {
+
+				$icon-selector: null;
+
+				display: inline-block;
+				color: $skyblue;
+				padding: 7px 11px;
+				border-radius: 30px;
+				font-size: 95%;
+				@include transition(all 0.2s);
+
+				@media (max-width: 1023px) {
+					font-size: 90%;
+					padding: 5px 7px;
+				}
+
+				@media (max-width: 767px) {
+					padding: 4px 6px;
+					font-size: 85%;
+				}
+
+				&-icon {
+					color: $link-color;
+					font-size: 110%;
+					$icon-selector: &;
+
+				}
+
+				&-title {
+					margin-left: 4px;
+
+					@media (max-width: 767px) {
+						margin-left: 0;
+					}
+				}
+
+				&:hover,
+				&:active,
+				&:focus {
+
+					background-color: $blue-sky;
+					color: #fff;
+					text-decoration: none;
+
+					&:focus {
+						background-color: darken($blue-sky, 10%);
+					}
+
+					#{$icon-selector} {
+						color: #fff;
+					}
+
+				}
+
+			}
+		}
+	}
+}
+		

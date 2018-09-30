@@ -1,0 +1,29 @@
+/* 
+-----------------------------------
+	BULKUPLOAD
+-----------------------------------
+*/
+
+.bulkupload {
+
+  &-table {
+
+    td {
+      vertical-align: middle !important;
+    }
+
+  }
+
+  &-item {
+
+    &-progressbar {
+      margin: 0;
+    }
+
+    &-input {
+      min-width: 150px;
+    }
+
+  }
+
+}

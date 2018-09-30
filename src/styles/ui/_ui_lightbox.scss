@@ -1,0 +1,72 @@
+/* 
+-----------------------------------
+	LIGHTBOX / MODAL
+-----------------------------------
+*/
+html.is_lightbox-opened {
+  overflow-y: hidden;
+}
+
+.lightbox {
+
+	&-btn-close {
+
+		position: absolute;
+		top: -15px;
+		right: -15px;
+		width: 30px;
+		line-height: 30px;
+		padding: 0;
+		border-radius: 20px;
+		
+	}
+
+	&-nav {
+
+		&-control {
+
+			&-prev, &-next {
+				padding: 10px 15px;
+				position: absolute;
+				top: 50%;
+				cursor: pointer;
+				
+			}
+
+			&-prev {
+				right: 100%;
+				border-radius: 20px 0 0 20px;
+
+				&::before {
+					@include fa-icon();
+					content: "\f104";
+				}
+
+			}
+
+			&-next {
+				left: 100%;
+				border-radius: 0 20px 20px 0;
+
+				&::after {
+					@include fa-icon();
+					content: "\f105";
+				}
+
+			}
+
+		}
+
+	}
+
+	&-image-container {
+		text-align: center;
+	}
+
+}
+
+
+
+
+
+

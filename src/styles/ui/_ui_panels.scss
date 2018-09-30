@@ -1,0 +1,107 @@
+/* 
+-----------------------------------
+	PANELS
+-----------------------------------
+*/
+
+.panel {
+	color: $text-color;
+	border: 0;
+	margin-bottom: 0;
+	box-shadow: none;
+	
+	&-bordered {
+		border: 1px solid darken($bluegrey-light, 3%);
+	}
+
+	&-heading,
+	&-footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		border-bottom: 1px solid darken($bluegrey-light, 3%);
+		
+		&.has_side-padding-lg {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		& > * {
+			flex-grow: 1;
+			
+			&:last-child {
+				flex-grow: 0;
+			}
+		}
+
+	}
+	
+	&-heading {
+		
+		&-warning {
+		
+			background-color:$brand-warning !important;
+			
+			.panel-title {
+				color:#fff;
+			}
+		}
+		
+		&-dark-grey {
+		
+			background-color:lighten($bluegrey-dark,5%) !important;
+			
+			.panel-title {
+				color:#fff;
+			}
+		}
+		
+	}
+
+	&-body {
+		background-color: #fff;
+		
+		&.has_side-padding-lg {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+	}
+
+	&-title {
+		font-size: 110%;
+		color: darken($bluegrey-light, 30%);
+	}
+
+	&-footer {
+		@include border-top-radius(0px);
+		width: 100%;
+		background-color: #fff;
+		
+		.ui_sidebar-right & {
+			border-radius: 0;
+		}
+	}
+
+	&-border {
+		border-style: solid;
+		border-width: 1px;
+	}
+
+	&-green {
+		border-color: $green-color;
+	}
+
+	&-rose {
+		border-color: $rose-color;
+	}
+
+	&-purple {
+		border-color: $purple-color;
+	}
+
+	&-blue {
+		border-color: $blue-color;
+	}
+
+}

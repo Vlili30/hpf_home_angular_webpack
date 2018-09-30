@@ -1,0 +1,48 @@
+/*
+-----------------------------------
+	MODAL
+-----------------------------------
+*/
+
+.modal {
+
+	&.fade {
+		transform: scale(0);
+		transition: all 0s;
+		opacity: 0;
+	}
+
+	&.fade.in {
+		transform: scale(1);
+		transition: all 0.3s;
+		opacity: 1;
+	}
+
+	&.in &-dialog,
+	&.fade &-dialog {
+		transform:scale(1) !important;
+	}
+
+	&-header {
+
+		min-height: 40px;
+		background-color: lighten($bluegrey-light, 3%);
+		display: flex;
+		align-items: center;
+	}
+
+	&-title {
+		color: darken($bluegrey-light, 30%);
+		font-size: 110%;
+		margin: 0;
+		text-transform: uppercase;
+		flex-grow: 1;
+	}
+
+	&-content {
+		border-radius: $border-radius-base;
+		box-shadow:none;
+		border: 0;
+	}
+
+}

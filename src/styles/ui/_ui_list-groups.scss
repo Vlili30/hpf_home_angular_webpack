@@ -1,0 +1,21 @@
+/*
+-----------------------------------
+	LIST-GROUP
+-----------------------------------
+*/
+
+.list-group {
+
+	&-item {
+		border-color: darken($bluegrey-light, 3%);
+
+		@at-root a#{&} {
+			color: $link-color;
+
+			&:hover {
+				color: $link-color;
+			}
+		}
+	}
+}
+

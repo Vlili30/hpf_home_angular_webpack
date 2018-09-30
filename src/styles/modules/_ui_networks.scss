@@ -1,0 +1,212 @@
+/* 
+-----------------------------------
+	NETWORKS
+-----------------------------------
+*/
+
+.ui_networks-categories-list {
+  padding: 15px;
+}
+
+.ui_networks {
+
+  &-category {
+
+    & + & {
+      margin-top: 15px;
+    }
+
+    &-heading {
+      background-color: lighten($bluegrey-light, 3%);
+      font-size: 110%;
+      padding: 10px 15px;
+      border-radius: 40px;
+
+      margin-bottom: 15px;
+
+      .media-left {
+        padding-right: 10px;
+      }
+
+      .badge {
+        background-color: #fff;
+        color: $link-color;
+        margin-left: -5px;
+      }
+    }
+
+  }
+
+  &-list {
+
+    margin:-5px;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    
+
+    > ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    .ui_network {
+      flex-basis: calc(100% - 10px);
+      margin:5px;
+      border-radius:15px;
+
+      @media (min-width: 1280px) {
+        flex-basis: calc(33.333333333% - 10px);
+        
+        .is_sidebar-right-open & {
+        	flex-basis: calc(50% - 10px);
+        }
+        
+      }
+
+      @media (max-width: 1279px) and (min-width: 801px) {
+        flex-basis: calc(50% - 10px);
+      }
+
+      @media (max-width: 800px) {
+        flex-basis: calc(100% - 10px);
+
+        &-bordered {
+          border: 1px solid $bluegrey-light !important;
+        }
+
+      }
+
+    }
+
+  }
+}
+
+.ui_network {
+  padding: 15px;
+  margin: -1px 0 0 0;
+  background-color: white;
+  display: block;
+
+  @at-root .ui_networks-list [class*="col-"] + [class*="col-"] .ui_network {
+    margin-left: -1px;
+  }
+
+  &-media {
+
+    @media (max-width: 480px) {
+      @include clearfix();
+    }
+
+    &-left {
+
+      @media (max-width: 480px) {
+        display: block;
+        float: left;
+        margin-bottom: 5px;
+      }
+    }
+
+    &-body {
+
+      @media (max-width: 480px) {
+        display: block;
+        width: auto;
+        overflow: visible;
+        zoom: auto;
+      }
+    }
+  }
+
+  &-bordered {
+    border: 1px solid $bluegrey-light;
+  }
+
+  &-picture {
+    display: block;
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-color: darken($bluegrey-light, 5%);
+  }
+
+  &-heading {
+    margin-bottom: 4px;
+
+    &-title {
+      margin: 0;
+      font-size: 120%;
+
+      a {
+        color: $skyblue;
+      }
+
+      .label {
+        margin-left: 3px;
+      }
+    }
+  }
+
+  &-body {
+    color: #888;
+
+    *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &-related {
+    position: relative;
+    margin-top: 10px;
+
+    @media (max-width: 479px) {
+      margin-left: -95px;
+    }
+    
+    .ui_topic-condensed .ui_topic-includes {
+    	margin-top:0;
+    }
+
+    .badge {
+      margin: 2px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -15px;
+      display: block;
+      width: 1px;
+      background-color: $bluegrey-light;
+      height: 100%;
+    }
+
+    &-heading {
+      margin: 0 0 10px 0;
+      color: #888;
+      border-bottom: 1px solid $bluegrey-light;
+      padding-bottom: 7px;
+      font-size: 90%;
+    }
+
+    &-topic {
+      margin: 0 0 5px 0;
+    }
+  }
+
+  &-footer {
+    border-top: 1px solid $bluegrey-light;
+    margin-top: 15px;
+    padding-top: 15px;
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      
+      > * + * {
+      	margin-left:5px;
+      }
+    }
+  }
+}
+

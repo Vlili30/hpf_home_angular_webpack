@@ -1,0 +1,31 @@
+/* 
+-----------------------------------
+	NEWS
+-----------------------------------
+*/
+
+.ui_news {
+
+  &-list {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  &-item {
+    flex-basis: 100%;
+    border: 1px solid $bluegrey-light;
+    padding: 20px;
+    margin: -0.5px;
+    flex-basis: calc(100% + 1px);
+
+    @media (min-width: 1280px) {
+      flex-basis: calc(33.333333333% + 1px);
+    }
+
+    @media (max-width: 1279px) and (min-width: 801px) {
+      flex-basis: calc(50% + 1px);
+    }
+
+  }
+}

@@ -1,0 +1,28 @@
+/* 
+-----------------------------------
+	TYPES
+-----------------------------------
+*/
+
+.list-unstyled {
+
+	&-icon {
+		margin-right: 3px;
+	}
+}
+
+.text-event {
+	color: $event-color !important;
+}
+
+.text-link {
+	color: $link-color !important;
+}
+
+.text-discussion {
+	color: $discussion-color !important;
+}
+
+.text-resources {
+	color: $resources-color !important;
+}

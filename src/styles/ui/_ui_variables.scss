@@ -1,0 +1,172 @@
+/*
+-----------------------------------
+	FONTS
+-----------------------------------
+*/
+
+$fa-font-path: '~font-awesome/fonts';
+$font-size-base : 0.85rem;
+
+/*
+-----------------------------------
+	COLORS
+-----------------------------------
+*/
+
+$bluegrey-light: lighten(#EAEFF1, 1%);
+$bluegrey: #547283;
+$bluegrey-dark: #2b4959;
+$skyblue: #00a3d4;
+$blue-sky: $skyblue;
+$link-color: $skyblue;
+$link-hover-color: $skyblue;
+$text-color: #888;
+
+$green-color: #ACD260;
+$rose-color: #e0528d;
+$purple-color: #9c84b2;
+$blue-color: #6097B6;
+
+$discussion-color: $green-color;
+$event-color: $rose-color;
+$resources-color: $purple-color;
+$poll-color: $blue-color;
+
+$brand-primary: darken(#428bca, 6.5%);
+$brand-success: #5cb85c;
+$brand-info: $skyblue;
+$brand-warning: #ffad0f;
+$brand-danger: #d9534f;
+
+$yiq-contrasted-threshold:  190;
+
+/*
+-----------------------------------
+	COMMON STYLE
+-----------------------------------
+*/
+
+$border-radius-base: 2px;
+
+/*
+-----------------------------------
+	BUTTONS
+-----------------------------------
+*/
+
+$btn-info-bg: $link-color;
+$btn-info-border: $link-color;
+
+$btn-danger-bg: $brand-danger;
+$btn-danger-border: $brand-danger;
+
+$btn-warning-bg: $brand-warning;
+$btn-warning-border: $brand-warning;
+
+/*
+-----------------------------------
+	TOOLTIP
+-----------------------------------
+*/
+
+$tooltip-bg: $bluegrey;
+$tooltip-arrow-color: $bluegrey;
+
+/*
+-----------------------------------
+	POPVER
+-----------------------------------
+*/
+$popover-arrow-color: $bluegrey;
+$popover-arrow-outer-color: $bluegrey;
+$popover-arrow-width: 8px;
+$popover-arrow-outer-width: 9px;
+
+/*
+-----------------------------------
+	FORMS
+-----------------------------------
+*/
+
+$input-border: darken($bluegrey-light, 3%);
+$input-color: $text-color;
+$input-border-focus: $link-color;
+
+$input-group-addon-bg: lighten($bluegrey-light, 3%);
+$input-group-addon-border-color: darken($bluegrey-light, 3%);
+
+/*
+-----------------------------------
+	STATES
+-----------------------------------
+*/
+
+$state-success-text: rgb(51, 223, 0) !default;
+$state-success-bg: #dff0d8 !default;
+$state-success-border: darken(adjust-hue($state-success-bg, -10), 5%) !default;
+
+$state-info-text: #31708f !default;
+$state-info-bg: #d9edf7 !default;
+$state-info-border: darken(adjust-hue($state-info-bg, -10), 7%) !default;
+
+$state-warning-text: #8a6d3b !default;
+$state-warning-bg: #fcf8e3 !default;
+$state-warning-border: darken(adjust-hue($state-warning-bg, -10), 5%) !default;
+
+$state-danger-text: #ff0000 !default;
+$state-danger-bg: #f2dede !default;
+$state-danger-border: darken(adjust-hue($state-danger-bg, -10), 5%) !default;
+
+/*
+-----------------------------------
+	PANELS
+-----------------------------------
+*/
+
+$panel-heading-padding: 13px 15px !default;
+
+/*
+-----------------------------------
+	TABLES
+-----------------------------------
+*/
+
+$table-bg-accent: #fcfcfc;
+$table-border-color: darken($bluegrey-light, 3%);
+$table-bg-hover: darken(#fcfcfc, 2%);
+
+/*
+-----------------------------------
+	PAGINATION
+-----------------------------------
+*/
+
+$pagination-border: darken($bluegrey-light, 3%);
+$pagination-active-color: #fff;
+$pagination-active-bg: $link-color;
+$pagination-active-border: $link-color;
+
+/*
+-----------------------------------
+	DROPDOWN
+-----------------------------------
+*/
+
+$dropdown-link-color: $text-color;
+$dropdown-link-active-bg: $link-color;
+
+/*
+-----------------------------------
+	NAV
+-----------------------------------
+*/
+
+$nav-pills-active-link-hover-bg: $link-color;
+
+/*
+-----------------------------------
+	LIST GROUP
+-----------------------------------
+*/
+
+$list-group-border: darken($bluegrey-light, 3%);

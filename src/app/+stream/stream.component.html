@@ -1,0 +1,19 @@
+<div class="spinner spinner-link" *ngIf="loading">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+</div>
+
+<div *ngIf="!loading">
+    <div class="ui_topics-stream">
+		<div *ngFor="let publication of stream" class="ui_fade">
+            <publication [data]="publication"></publication>
+		</div>
+
+		<!-- <div class="spinner spinner-link" ng-show='stream.busy && !stream.end'>
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div> -->
+	</div>
+</div>

@@ -1,0 +1,170 @@
+/* 
+-----------------------------------
+	TREE VIEW
+-----------------------------------
+*/
+
+.tree-view {
+
+	.tree-view-toolbar {
+		display: flex;
+	}
+
+	.tree-view-nodes .tree-view-nodes {
+		padding-left: 14px;
+
+		& .tree-view-node:after {
+			content: "";
+			display: block;
+			border-bottom: 1px dashed $link-color;
+			position: absolute;
+			top: 19px;
+			z-index: 10;
+			left: 0;
+			width: 20px;
+		}
+
+		& .has_child.tree-view-node:after {
+			width: 10px;
+		}
+
+	}
+
+	.tree-view-nodes {
+
+		& > *:before {
+			content: "";
+			visibility: hidden;
+			border-left: 1px dashed $link-color;
+			position: absolute;
+			top: 24px;
+			bottom: 18px;
+			left: 14px;
+			z-index: 10;
+		}
+
+		& > *[collapsed=false]:before {
+			visibility: visible;
+		}
+
+	}
+
+	.tree-view-node {
+		background-color: #fff;
+		border: 1px solid transparent;
+		border-bottom: 1px solid $bluegrey-light;
+		padding: 8px 4px 8px 23px;
+		position: relative;
+		font-weight: normal;
+
+		display: flex;
+		justify-content: flex-start;
+		
+		> * {
+			margin: 0 4px;
+		}
+
+		@include transition(all 0.2s);
+
+		&:hover,
+		&:focus {
+			background-color: lighten($bluegrey-light, 3%);
+			
+			.tree-view-node-btn-collapse .fa {
+				background-color: lighten($bluegrey-light, 3%);
+			}
+		}
+
+		&.is_active,
+		&:active {
+			border-color: $link-color;
+			@include box-shadow(2px 3px 0 0 rgba(0, 0, 0, 0.1));
+			position: relative;
+			z-index: 10;
+		}
+
+		&.has_child {
+			padding-left: 4px;
+		}
+
+		&[data-nodrag=true] {
+			cursor: pointer;
+		}
+
+		&-title {
+			flex-grow: 3;
+
+			&-text {
+
+				cursor: pointer;
+
+				&:hover {
+					color: $link-color;
+				}
+			}
+		}
+
+		&-exta-details {
+			text-align: right;
+			white-space: nowrap;
+		}
+
+		&-action {
+			display: block;
+			text-align: right;
+			margin-top: -2px;
+			margin-bottom: -2px;
+			white-space: nowrap;
+		}
+
+		&-btn-collapse {
+			position: relative;
+			z-index: 11;
+			vertical-align: middle;
+			text-decoration: none;
+
+			margin-right: 2px;
+			
+			&:hover,
+			&:focus,
+			&:active {
+				color: darken($link-color, 10%);
+			}
+
+			.fa {
+				background-color: #fff;
+			}
+
+		}
+
+	}
+
+	.angular-ui-tree-placeholder {
+		background: #f0f9ff;
+		border: 2px dashed #bed2db;
+	}
+
+	tr.angular-ui-tree-empty {
+		height: 100px
+	}
+
+	.group-title {
+		background-color: #687074 !important;
+		color: #FFF !important;
+	}
+
+	.nodrop {
+		background-color: #f2dede;
+	}
+
+	.tree-node-content {
+		margin: 0;
+	}
+
+	.tree-handle {
+		padding: 10px;
+		background: #428bca;
+		color: #FFF;
+		margin-right: 10px;
+	}
+}

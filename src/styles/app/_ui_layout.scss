@@ -1,0 +1,133 @@
+/*
+-----------------------------------
+	MAIN SECTIONS
+-----------------------------------
+*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
+}
+
+html {
+	background-color: #fff;
+	padding: 0;
+	margin: 0;
+	-ms-overflow-style: scrollbar;
+	overflow-x: hidden;
+	width: 100%;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: #fff;
+	color: $text-color;
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	-ms-overflow-style: scrollbar;
+}
+
+a {
+	cursor: pointer
+}
+
+#ui_main-wrapper {
+}
+
+#ui_container {
+	padding: 0 0 0 0;
+	position: relative;
+	z-index: 2;
+}
+
+#ui_sidebar-left {
+	color: #fff;
+	background-color: $bluegrey-dark;
+	min-height: 100vh;
+}
+
+#ui_central-col {
+	vertical-align: top;
+	box-shadow: -5px 0 rgba(0, 0, 0, 0.08);
+	background-color: lighten($bluegrey,10%);
+	position: relative;
+	z-index: 2;
+	min-height: 100vh;
+
+}
+
+#ui_top-navbar {
+	background-color: #fff;
+}
+
+#ui_breadcrumb {
+	display: none;
+	background-color: #f9fafb;
+	linear-gradient: to right, #f9fafb, #edf1f3;
+	box-shadow: 1px 0 rgba(255, 255, 255, 0), 20px 0 #edf1f3;
+	font-size: 90%;
+
+	.ui_breadcrumb {
+		padding: 3px 15px;
+	}
+}
+
+#ui_content {
+	//border-left: 1px solid #fff;
+	//float:left;
+	background-color: #fff;
+	box-shadow: 8px 0 0 0 rgba(2, 19, 28, 0.07), 1px 0 0 0 rgba(2, 19, 28, 0.1), -5px 0 0 0 rgba(2, 19, 28, 0.08);
+	position: relative;
+	z-index: 2;
+	margin-right: 0;
+	transition: margin 0.20s 0s;
+	flex-grow: 1;
+
+
+	&.ui_content-full {
+		margin-right: 0;
+	}
+
+	.is_sidebar-right-close & {
+
+		box-shadow: none;
+
+		margin-right: -400px;
+
+		@media (max-width: 1280px) {
+			margin-right: -350px;
+		}
+
+		@media (max-width: 1023px) {
+			margin-right: 0;
+		}
+	}
+
+	> .ui_tab-content {
+		background-color: darken($bluegrey-light, 3%);
+		min-height: 1200px;
+	}
+
+}
+
+#ui_content-wrapper {
+	display: flex;
+	align-items: stretch;
+	box-shadow: 20px 0 rgb(237, 241, 243);
+	min-height: calc(100vh - 60px);
+}
+
+#ui_sidebar-right {
+	transition: all 0.20s 0s;
+	vertical-align: top;
+	background-color: $bluegrey-light;
+}
+
+#ui_footer {
+	padding: 20px 15px;
+	background-color: $bluegrey-light;
+	clear: both;
+}

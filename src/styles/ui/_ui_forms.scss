@@ -1,0 +1,144 @@
+/* 
+-----------------------------------
+	REQUIRED STAR
+-----------------------------------
+*/
+
+.required-star {
+	color: #ff0000;
+	font-weight: bold;
+}
+
+/* 
+-----------------------------------
+	LABEL CONTROL
+-----------------------------------
+*/
+
+.label-control {
+	display: inline-block;
+	max-width: 100%;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+/* 
+-----------------------------------
+	FORM CONTROL
+-----------------------------------
+*/
+
+.form-control {
+
+	@include box-shadow(1px 2px 0 0 rgba(0, 0, 0, 0.05));
+	@include transition(all 0.3s ease-in-out);
+
+	&:focus {
+		border-color: $link-color;
+		outline: 0;
+		@include box-shadow(2px 3px 0 0 rgba(0, 0, 0, 0.1));
+	}
+
+	&.ui-select-bootstrap {
+
+		&.ui-select-multiple {
+
+			padding: 5px;
+			height: auto;
+			min-height: 34px;
+		
+			> *:first-child {
+				display: flex;
+				flex-wrap: wrap;
+			}
+
+			.ui-select-search {
+				flex-grow: 2;
+				margin-bottom: 0;
+				width: auto !important;
+				height: auto;
+				padding-left: 4px;
+			}
+
+			.ui-select-match {
+
+				flex-grow: 0;
+				background-color: lighten($bluegrey-light, 3%) !important;
+				border-radius: 2px;
+			
+				&-item {
+					margin: 0;
+				}
+
+				&-close {
+					padding-left: 5px;
+				}
+			}
+
+		}
+
+		.ui-select-choices-row {
+
+			> span {
+				padding: 3px 10px;
+			}
+
+			&.active > span {
+				background-color: $link-color;
+			}
+
+		}
+
+	}
+	
+	
+}
+
+/* 
+-----------------------------------
+	RADIO / CHECKBOX
+-----------------------------------
+*/
+
+.radio-font,
+.checkbox-font {
+
+	input {
+		display: none;
+	}
+
+	input + .input-title:before {
+		@include fa-icon();
+		content: "\f10c";
+		color: $link-color;
+		visibility: visible;
+		margin: 0 7px 0 -20px;
+	}
+}
+
+.radio-font {
+
+	input:checked + .input-title:before,
+	&:hover input + .input-title:before {
+		content: "\f192";
+	}
+}
+
+.checkbox-font {
+
+	input + .input-title:before {
+		content: "\f096";
+		padding-right: 1px;
+	}
+
+	&:hover input + .input-title:before {
+		content: "\f0c8";
+		padding-right: 0;
+	}
+
+	input:checked + .input-title:before {
+		content: "\f14a";
+		padding-right: 0;
+	}
+
+}

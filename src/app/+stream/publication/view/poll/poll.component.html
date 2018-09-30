@@ -1,0 +1,114 @@
+<div *ngIf="poll?.choices.length > 0" class="ui_topic-item ui_topic-item-poll">
+
+    <div class="ui_topic-item-badge">
+
+        <p class="ui_badge ui_badge-poll" tooltip-placement="right" uib-tooltip="This topic contains a poll">
+            <span class="ui_badge-title">This topic contains a poll</span>
+            <i class="ui_badge-icon fa fa-tasks"></i>
+        </p>
+
+    </div>
+    <div class="ui_topic-item-media">
+
+        <div class="media">
+
+            <div class="media-body">
+
+                <h4 class="media-heading">
+                    <strong class="media-title">{{poll.title}}</strong>
+                    <span *ngIf="poll.visible && poll.showVotes === 1 && !displayVotesDetails">(<a href="" (click)="displayVotesDetails=true;">Show vote details</a>)</span>
+                    <span *ngIf="poll.visible && poll.showVotes === 1 && displayVotesDetails">(<a href="" (click)="displayVotesDetails=false;">Hide vote details</a>)</span>
+                </h4>
+                <form class="ui_poll" [formGroup]="pollForm" (submit)="submitVote(pollForm.value)">
+
+                    <div class="ui_poll-body">
+
+                        <div class="ui_poll-choices">
+
+                            <div *ngFor="let multipleChoices of multipleChoices.controls;  let i = index;" class="ui_poll-choice">
+
+                                <div class="ui_poll-choice-label" *ngIf="poll.votable">
+
+                                    <div *ngIf="poll.type == 'SINGLE'" class="radio radio-font">
+                                        <label>
+                                            <input type="radio" formControlName="singleChoice" value="{{poll.choices[i].id}}">
+                                            <span class="input-title">{{poll.choices[i].label}}</span>
+                                        </label>
+                                    </div>
+
+                                    <div *ngIf="poll.type == 'MULTIPLE'" class="checkbox checkbox-font">
+                                        <label>
+                                            <input type="checkbox" [formControl]="multipleChoices"/>
+                                            <span class="input-title">{{poll.choices[i].label}}</span>
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                                <div class="ui_poll-choice-label" *ngIf="!poll.votable">
+                                    <span>{{poll.choices[i].label}}</span>
+                                </div>
+
+                                <div class="ui_poll-choice-result" *ngIf="poll.visible">
+
+                                    <div class="progress">
+                                        <div class="progress-bar" *ngIf="poll.showResult =='RESULT_ALWAYS' || (poll.showResult =='RESULT_AFTER_VOTE' && poll.hasVoted)"
+                                             role="progressbar" [attr.aria-valuenow]="poll.choices[i].votes" [ngStyle]="{'width':poll.choices[i].votes/poll.votes*100+'%'}">{{poll.choices[i].votes}}
+                                        </div>
+                                    </div>
+
+                                    <div class="ui_poll-choice-result-details" *ngIf="poll.showVotes == 1 && displayVotesDetails" get-parent-width>
+
+                                        <div class="ui_poll-choice-result-details-profile" *ngFor="let detail of choice.votesDetails">
+                                            {{detail.userId}}
+                                            <!-- <profile user="detail.userId" avatar-size="'xs'" show-name="true"></profile> -->
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="ui_poll-footer">
+                        <div class="ui_poll-submit">
+                            <div class="ui_poll-submit-info">
+                                <span class="ui_poll-submit-ending" *ngIf="poll.dateEnd !== null">
+                                    This poll {{poll.isPassed ? 'ended on' : 'ends on'}}
+                                    <!-- <sante-datetime date="poll.dateEnd"></sante-datetime> -->
+                                    {{poll.dateEnd | date:'EEEE MMMM d, h:mm a'}}
+                                </span>
+                                <span class="ui_poll-submit-voted" *ngIf="poll.hasVoted">and <strong>you voted</strong> <i class="fa fa-check"></i></span>
+                                <span *ngIf="poll.showVotes === 1 && poll.votable">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Be aware your name will be visible next to your vote
+                                </span>
+                            </div>
+                            <div class="ui_poll-submit-action">
+                                <button type="submit"
+                                        *ngIf="poll.votable"
+                                        button-spinner="loading"
+                                        spinning-icon="fa fa-circle-o-notch fa-spin btn-icon"
+                                        button-append="fa fa-angle-right btn-icon"
+                                        [disabled]="!isSumbitEnable()"
+                                        class="btn btn-link ui_poll-submit-btn">
+                                        Submit your vote
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

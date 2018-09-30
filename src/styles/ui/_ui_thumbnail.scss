@@ -1,0 +1,107 @@
+/*
+-----------------------------------
+	THUMBNAIL
+-----------------------------------
+*/
+.ui_thumbnail {
+
+	display: block;
+	position: relative;
+
+	&-cover {
+		background-size: cover;
+		min-height: 50px;
+		min-width: 50px;
+
+		@media(max-width: 767px) {
+			min-height: 40px;
+			min-width: 40px;
+		}
+	}
+
+	&-placeholder {
+		height: 150px;
+		width: 150px;
+		border: 1px dashed darken($bluegrey-light, 10%);
+
+		@media(max-width: 767px) {
+			height: 80px;
+			width: 80px;
+		}
+
+		&:hover,
+		&:active,
+		&:focus {
+			border: 1px dashed $link-color;
+		}
+
+		&-label {
+			left: 0;
+			right: 0;
+			text-align: center;
+			position: absolute;
+			top: 50%;
+			padding: 0 10px;
+
+			transform: translateY(-50%);
+		}
+
+	}
+
+	&-corner-badge {
+		position: absolute;
+		bottom: -10px;
+		right: -10px;
+
+		.badge {
+			font-size: 11px;
+			padding: 0 4px;
+			min-width: 20px;
+			min-height: 0;
+			height: 20px;
+			border: 0;
+			line-height: 20px;
+		}
+	}
+
+	&-center-badge {
+
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		white-space: nowrap;
+		opacity: 0;
+
+		transform: scale(1) translate(-50%, -50%);
+
+		transform-origin: 0 0;
+
+		transition: all .15s;
+
+		color: #fff;
+
+		text-align: center;
+
+		.badge {
+			border: 0;
+		}
+
+		&-hover {
+			transform: scale(0) translate(-50%, -50%);
+			transform-origin: 0 0;
+
+		}
+	}
+
+	&:hover &-center-badge,
+	&:active &-center-badge,
+	&:focus &-center-badge {
+		transform: scale(2) translate(-50%, -50%);
+		opacity: 1;
+
+		&-hover {
+			transform: scale(1) translate(-50%, -50%);
+		}
+	}
+
+}

@@ -1,0 +1,58 @@
+/* 
+-----------------------------------
+	DROPDOWN
+-----------------------------------
+*/
+.ui_dropdown,
+.dropdown {
+
+	display: inline-block;
+	vertical-align: middle;
+
+	&-menu {
+
+		border-color: $bluegrey-light;
+		@include box-shadow(2px 3px 0 rgba(0, 0, 0, 0.08));
+
+		li > a {
+			padding: 6px 12px;
+
+			.menu-title + .menu-icon,
+			.menu-icon + .menu-title {
+				margin-left: 5px;
+			}
+
+		}
+
+		&-sm {
+			font-size: 90%;
+
+			li > a {
+				padding: 4px 10px;
+			}
+		}
+
+	}
+}
+
+/* 
+-----------------------------------
+	menu
+-----------------------------------
+*/
+
+.ui_menu {
+
+	&-item {
+
+		&-icon {
+
+			margin: 0 4px;
+			min-width: 16px;
+			
+			&.pull-right {
+				margin-top: 2px;
+			}
+		}
+	}
+}

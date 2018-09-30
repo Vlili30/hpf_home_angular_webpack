@@ -1,0 +1,334 @@
+<nav class="ui_content-navtabs" top="0" set-class-when-scroll-hit="ui_content-navtabs-affix" placeholder-class="ui_content-navtabs-affix-placeholder">
+
+    <ul
+        *ngIf="group == 'group/index' || group == 'group/index/network' || group == 'group/index/network/categories'"
+        class="ui_content-navtabs-left"
+        eu-sante-help
+        eu-sante-help-enable="true"
+        eu-sante-help-id="take-a-tour"
+        eu-sante-help-step="1"
+        eu-sante-help-container=".ui_content-navtabs"
+        eu-sante-help-anchor-offset="150"
+        eu-sante-help-html="
+        The network navigation has 5 tabs
+        <br/><strong>Network home</strong> is a summary of last activity in the network
+        <br/><strong>All contents</strong> is a timeline view of network publications
+        <br/><strong>Ressources</strong> is a timeline view of network publications
+        <br/><strong>Events</strong> is a calendar view of network events
+        <br/><strong>News</strong> is a grid representation of network publications
+        "
+    >
+
+        <li class="ui_content-navtab ui_content-navtab--menu">
+            <a class="ui_content-navtab-link" (click)="$root.$broadcast('toggleLeftSidebar')">
+                <span class="fa fa-bars ui_content-navtab-icon" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Menu</span>
+            </a>
+        </li>
+
+        <li  class="ui_content-navtab ui_content-navtab--manage-access" [ngClass]="{'active': group == 'group/index'}">
+            <a class="ui_content-navtab-link" href="<?php echo $this->url('group/index');?>">
+                <span class="fa fa-unlock-alt ui_content-navtab-icon" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Network access</span>
+            </a>
+        </li>
+
+        <li class="ui_content-navtab ui_content-navtab--manage-categories" [ngClass]="{'active': group == 'group/index/network/categories'}">
+            <a class="ui_content-navtab-link" href="#!network/categories">
+                <span class="ui_content-navtab-icon fa fa-tags" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Manage categories</span>
+            </a>
+        </li>
+
+    </ul>
+
+    <ul
+        *ngIf="group == 'network/home' || group == 'network/show' || group == 'document/folderview' || group == 'resources/documentview' || group == 'resources/documentCreate' || group == 'event' || group == 'news'"
+        class="ui_content-navtabs-left"
+        eu-sante-help
+        eu-sante-help-enable="true"
+        eu-sante-help-id="take-a-tour"
+        eu-sante-help-step="1"
+        eu-sante-help-container=".ui_content-navtabs"
+        eu-sante-help-anchor-offset="150"
+        eu-sante-help-html="
+        The network navigation has 5 tabs
+        <br/><strong>Network home</strong> is a summary of last activity in the network
+        <br/><strong>All contents</strong> is a timeline view of network publications
+        <br/><strong>Ressources</strong> is a timeline view of network publications
+        <br/><strong>Events</strong> is a calendar view of network events
+        <br/><strong>News</strong> is a grid representation of network publications
+        "
+    >
+
+        <li class="ui_content-navtab ui_content-navtab--menu">
+            <a class="ui_content-navtab-link" ng-click="$root.$broadcast('toggleLeftSidebar')">
+                <span class="fa fa-bars ui_content-navtab-icon" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Menu</span>
+            </a>
+        </li>
+
+        <li class="ui_content-navtab ui_content-navtab-home" ng-class="{'active': group == 'network/home'}">
+            <a class="ui_content-navtab-link" href="<?php echo $this->url('network/home', array('networkid' => $network->getId()));?>">
+                <span class="fa fa-home ui_content-navtab-icon" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title hidden-xs">NETWORK HOME</span>
+                <span class="ui_content-navtab-title visible-xs-inline-block">HOME</span>
+            </a>
+        </li>
+        <li class="ui_content-navtab ui_content-navtab--stream" ng-class="{'active': group == 'network/show'}">
+            <a class="ui_content-navtab-link" href="<?php echo $this->url('network/show', array('id' => $network->getId()));?>">
+                <span class="fa fa-comments ui_content-navtab-icon" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">ALL CONTENTS</span>
+            </a>
+        </li>
+        <li class="ui_content-navtab ui_content-navtab--ressources" ng-class="{'active': group == 'document/folderview'}">
+            <a class="ui_content-navtab-link" href="<?php echo $this->url('document/folderview');?>">
+                <span class="fa fa-file ui_content-navtab-icon" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">RESOURCES</span>
+            </a>
+        </li>
+        <li class="ui_content-navtab ui_content-navtab--events" ng-class="{'active': group == 'event'}">
+            <a class="ui_content-navtab-link" href="<?php echo $this->url('event');?>">
+                <span class="fa fa-calendar ui_content-navtab-icon"></span>
+                <span class="ui_content-navtab-title">EVENTS</span>
+            </a>
+        </li>
+        <li class="ui_content-navtab ui_content-navtab--news" ng-class="{'active': group == 'news'}">
+            <a class="ui_content-navtab-link" href="<?php echo $this->url('news', array(), array('fragment' => 'news'));?>">
+                <span class="fa fa-newspaper-o ui_content-navtab-icon" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">NEWS</span>
+            </a>
+        </li>
+
+    </ul>
+
+    <div class="ui_content-navtabs-grow"></div>
+
+    <ul class="ui_content-navtabs-actions" ng-if="group == 'group/index'">
+        <li class="ui_content-navtab ui_content-navtab--filter">
+            <a class="ui_content-navtab-link" ng-click="toggleFilter()">
+                <span class="ui_content-navtab-icon fa fa-filter" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Filter networks</span>
+            </a>
+        </li>
+
+        <li class="ui_content-navtab ui_content-navtab--create">
+            <a class="ui_content-navtab-link" href="#!network/0">
+                <span class="ui_content-navtab-icon fa fa-plus" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Create network</span>
+            </a>
+        </li>
+
+    </ul>
+
+    <ul class="ui_content-navtabs-actions" *ngIf="group == 'network/show'">
+
+        <li class="ui_content-navtab ui_content-navtab--filter">
+            <a class="ui_content-navtab-link" ng-click="toggleFilter()">
+                <span class="ui_content-navtab-icon fa fa-filter" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Filter publication</span>
+            </a>
+        </li>
+
+        <li class="ui_content-navtab ui_content-navtab--create">
+            <a class="ui_content-navtab-link" ng-click="createItem()">
+                <span class="ui_content-navtab-icon fa fa-plus" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Create publication</span>
+            </a>
+        </li>
+
+        <li class="ui_dropdown ui_content-navtab ui_content-navtab--help" uib-dropdown dropdown-append-to-body>
+            <a class="ui_content-navtab-link" id="inline-help-dropdown"  role="button" uib-dropdown-toggle>
+                <span class="ui_content-navtab-icon fa fa-question" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Help</span>
+            </a>
+
+            <ul class="ui_dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="inline-help-dropdown">
+                <li class="ui_dropdown-menu-item">
+                    <a class="ui_menu-item" role="button" eu-sante-help eu-sante-help-play="take-a-tour">
+                        <span class="ui_menu-item-title">Main features quick tour</span>
+                    </a>
+                </li>
+                <li class="ui_dropdown-menu-item">
+                    <a class="ui_menu-item" role="button" eu-sante-help eu-sante-help-play="2">
+                        <span class="ui_menu-item-title">What are the different actions of a publication ?</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul class="ui_content-navtabs-actions ui_fade" *ngIf="group == 'document/folderview' && ( viewMode !='editDocument' && viewMode !='createDocument' && viewMode !='bulkUpload')">
+
+        <li class="ui_content-navtab ui_content-navtab--search" >
+            <a class="ui_content-navtab-link" uib-popover-template="'globalSearchPopover.html'" popover-placement="bottom">
+                <span class="ui_content-navtab-icon fa fa-search" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Global search {{viewMode}}</span>
+            </a>
+        </li>
+
+        <li class="ui_content-navtab ui_content-navtab--add">
+            <a class="ui_content-navtab-link" ng-click="createDocument(selectedFolder)"
+                ng-show="selectedFolder || !hideFolderActionButtons ">
+                <span class="ui_content-navtab-icon fa fa-plus" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Add document</span>
+            </a>
+        </li>
+
+        <li class="ui_content-navtab ui_content-navtab--add">
+            <a class="ui_content-navtab-link" ng-click="initBulkUpload($event,selectedFolder)"
+                ng-show="selectedFolder || !hideFolderActionButtons ">
+                <span class="ui_content-navtab-icon fa fa-cloud-upload" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Bulk upload</span>
+            </a>
+        </li>
+
+        <li class="ui_dropdown ui_content-navtab ui_content-navtab--help" uib-dropdown dropdown-append-to-body>
+            <a class="ui_content-navtab-link" id="inline-help-dropdown"  role="button" uib-dropdown-toggle>
+                <span class="ui_content-navtab-icon fa fa-question" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Help</span>
+            </a>
+
+            <ul class="ui_dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="inline-help-dropdown">
+                <li class="ui_dropdown-menu-item">
+                    <a class="ui_menu-item" role="button" eu-sante-help eu-sante-help-play="take-a-tour">
+                        <span class="ui_menu-item-title">Main features quick tour</span>
+                    </a>
+                </li>
+                <li class="ui_dropdown-menu-item">
+                    <a class="ui_menu-item" role="button" eu-sante-help eu-sante-help-play="2">
+                        <span class="ui_menu-item-title">What are the different actions of a publication ?</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+
+    <ul class="ui_content-navtabs-actions ui_fade" ng-if="group == 'resources/documentview' && isDocumentLoaded">
+
+        <li class="ui_content-navtab ui_content-navtab--back">
+            <a class="ui_content-navtab-link" href="#!/{{documentFolderId}}">
+                <span class="ui_content-navtab-icon fa fa-chevron-left" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Back to documents list</span>
+            </a>
+        </li>
+
+        <li class="ui_content-navtab ui_content-navtab--back">
+            <a class="ui_content-navtab-link" href="#!/document/edit/{{documentId}}">
+                <span class="ui_content-navtab-icon fa fa-pencil" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Edit Document</span>
+            </a>
+        </li>
+
+        <li class="ui_dropdown ui_content-navtab ui_content-navtab--help" uib-dropdown dropdown-append-to-body>
+            <a class="ui_content-navtab-link" id="inline-help-dropdown"  role="button" uib-dropdown-toggle>
+                <span class="ui_content-navtab-icon fa fa-question" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Help</span>
+            </a>
+
+            <ul class="ui_dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="inline-help-dropdown">
+                <li class="ui_dropdown-menu-item">
+                    <a class="ui_menu-item" role="button" eu-sante-help eu-sante-help-play="take-a-tour">
+                        <span class="ui_menu-item-title">Main features quick tour</span>
+                    </a>
+                </li>
+                <li class="ui_dropdown-menu-item">
+                    <a class="ui_menu-item" role="button" eu-sante-help eu-sante-help-play="2">
+                        <span class="ui_menu-item-title">What are the different actions of a publication ?</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+
+    <ul class="ui_content-navtabs-actions ui_fade" *ngIf="group == 'resources/documentCreate' && isDocumentLoaded">
+
+        <li class="ui_content-navtab ui_content-navtab--save">
+            <button class="ui_content-navtab-link" type="submit" button-spinner="loading" button-title-class="ui_content-navtab-title" spinning-icon="fa fa-circle-o-notch fa-spin ui_content-navtab-icon" button-prepend="fa fa-check ui_content-navtab-icon" ng-disabled="loading">
+                <span class="ui_content-navtab-title">Save document</span>
+            </button>
+        </li>
+
+        <li class="ui_content-navtab ui_content-navtab--cancel">
+            <a class="ui_content-navtab-link" href="#!/document/{{documentId}}">
+                <span class="ui_content-navtab-icon fa fa-times" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Cancel</span>
+            </a>
+        </li>
+
+        <li class="ui_dropdown ui_content-navtab ui_content-navtab--help" uib-dropdown dropdown-append-to-body>
+            <a class="ui_content-navtab-link" id="inline-help-dropdown"  role="button" uib-dropdown-toggle>
+                <span class="ui_content-navtab-icon fa fa-question" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Help</span>
+            </a>
+
+            <ul class="ui_dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="inline-help-dropdown">
+                <li class="ui_dropdown-menu-item">
+                    <a class="ui_menu-item" role="button" eu-sante-help eu-sante-help-play="take-a-tour">
+                        <span class="ui_menu-item-title">Main features quick tour</span>
+                    </a>
+                </li>
+                <li class="ui_dropdown-menu-item">
+                    <a class="ui_menu-item" role="button" eu-sante-help eu-sante-help-play="2">
+                        <span class="ui_menu-item-title">What are the different actions of a publication ?</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+
+
+
+    <ul class="ui_content-navtabs-actions" *ngIf="group == 'event'">
+
+        <li class="ui_content-navtab ui_content-navtab--filter">
+            <a class="ui_content-navtab-link" ng-click="setViewMode()">
+                <span class="ui_content-navtab-icon fa fa-exchange" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Switch to list view</span>
+            </a>
+        </li>
+
+        <li class="ui_content-navtab ui_content-navtab--create">
+            <a class="ui_content-navtab-link" ng-click="createItem()">
+                <span class="ui_content-navtab-icon fa fa-plus" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Create event</span>
+            </a>
+        </li>
+
+        <li class="ui_dropdown ui_content-navtab ui_content-navtab--help" uib-dropdown dropdown-append-to-body>
+            <a class="ui_content-navtab-link" id="inline-help-dropdown"  role="button" uib-dropdown-toggle>
+                <span class="ui_content-navtab-icon fa fa-question" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Help</span>
+            </a>
+
+            <ul class="ui_dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="inline-help-dropdown">
+                <li class="ui_dropdown-menu-item">
+                    <a class="ui_menu-item" role="button" eu-sante-help eu-sante-help-play="take-a-tour">
+                        <span class="ui_menu-item-title">Main features quick tour</span>
+                    </a>
+                </li>
+                <li class="ui_dropdown-menu-item">
+                    <a class="ui_menu-item" role="button" eu-sante-help eu-sante-help-play="2">
+                        <span class="ui_menu-item-title">What are the different actions of a publication ?</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+
+    <ul class="ui_content-navtabs-actions">
+
+        <li class="ui_content-navtab ui_content-navtab--sidebar-right">
+            <a class="ui_content-navtab-link" (click)="$root.$broadcast('toggleRightSidebar')">
+                <span class="ui_content-navtab-icon fa fa-outdent" aria-hidden="true"></span>
+                <span class="ui_content-navtab-title">Sidebar</span>
+            </a>
+        </li>
+
+    </ul>
+
+</nav>

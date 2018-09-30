@@ -1,0 +1,48 @@
+/*
+-----------------------------------
+	UTILITIES
+-----------------------------------
+*/
+
+.ui_v-align-middle {
+	vertical-align: middle;
+}
+
+.align-left-wrap-text {
+	padding-right: 15px;
+	padding-bottom: 5px;
+	float: left;
+}
+
+.align-right-wrap-text {
+	padding-left: 15px;
+	padding-bottom: 5px;
+	float: right;
+}
+
+/*
+-----------------------------------
+	Z-INDEX
+-----------------------------------
+*/
+
+.z-index-zero {
+	z-index: 0 !important;
+}
+
+/*
+-----------------------------------
+	WORD BREAK
+-----------------------------------
+*/
+
+.word-break {
+	-ms-word-break: break-all;
+	word-break: break-all;
+
+	word-break: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+}
+

@@ -1,0 +1,13 @@
+/*
+-----------------------------------
+	LABELS
+-----------------------------------
+*/
+
+.label {
+	font-weight: normal;
+}
+
+.ui_label-skyblue {
+	@include badge-variant($skyblue);
+}

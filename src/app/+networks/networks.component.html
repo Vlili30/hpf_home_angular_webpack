@@ -1,0 +1,193 @@
+<div class="spinner spinner-link" *ngIf="loading">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+</div>
+
+<div class="ui_networks-categories-list" *ngIf="!loading">
+
+    <div class="ui_networks-category is_intro ui_fade" *ngFor="let category of structure; let i = index;">
+
+        <header class="ui_networks-category-heading">
+            <div class="media">
+                <div class="media-left media-middle">
+                    <div class="badge badge-lg">
+                        <span class="sr-only">Category</span>
+                        <i class="fa fa-tag fa-lg"></i>
+                    </div>
+                </div>
+                <div class="media-body media-middle">
+                    <h3 class="ui_content-section-heading-title">{{category.label}}</h3>
+
+                    <p class="media-description">{{category.description}}</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="ui_networks-category-body">
+
+            <div class="ui_networks-list" ng-init="nbNetwork = category.networks.length">
+
+                <div class="ui_network ui_network-bordered  ui_fade" *ngFor="let network of category.networks" ng-show="category.optionNbNetworkVisible== ''  || ((category.optionNbNetworkVisible > 0 && $index < category.optionNbNetworkVisible)) || category.allVisible">
+
+                    <div class="media ui_network-media">
+                        <div *ngIf="network.picture[0]" class="media-left ui_network-media-left">
+                            <div class="ui_network-picture" style="background-image:url({{network.picture[0].content}})"></div>
+
+                        </div>
+                        <div class="media-body ui_network-media-body">
+                            <header class="ui_network-heading">
+                                <h4 class="ui_network-heading-title">
+                                    <a href="/network/{{network.id}}" class="media">
+                                        <span class="media-body">{{network.label}}</span>
+                                        <span class="media-right" *ngIf="network.isNew">
+                                            <span class="label label-info">New</span>
+                                        </span>
+                                    </a>
+                                </h4>
+                            </header>
+                            <div class="ui_network-body">
+                                <p>{{network.description}}</p>
+                            </div>
+                            <div class="ui_network-related">
+
+                                <div class="ui_network-related-topic">
+
+                                    <div class="media">
+                                        <div class="media-left media-middle text-nowrap">
+                                            Network activity
+                                        </div>
+                                        <div class="media-body">
+
+                                            <div class="ui_topic-condensed">
+
+                                                <dl class="ui_topic-includes">
+                                                    <dt class="ui_topic-includes-title">This network includes :</dt>
+
+                                                    <dd ng-if="network.nbEvent > 0" class="badge badge-event" attr.uib-tooltip-append-to-body="true" attr.uib-tooltip="Network contains {{network.nbEvent}} event">
+                                                        <span class="badge-number">{{network.nbEvent}}</span>
+                                                        <span class="badge-title">meeting</span>
+                                                        <i class="badge-icon fa fa-calendar"></i>
+                                                    </dd>
+                                                    <dd ng-if="network.nbPoll > 0" class="badge badge-poll" attr.uib-tooltip-append-to-body="true" attr.uib-tooltip="Network contains {{network.nbPoll}} poll">
+                                                        <span class="badge-number">{{network.nbPoll}}</span>
+                                                        <span class="badge-title">poll</span>
+                                                        <i class="badge-icon fa fa-tasks"></i>
+                                                    </dd>
+                                                    <dd ng-if="network.nbDoc > 0" class="badge badge-resources" attr.uib-tooltip-append-to-body="true" attr.uib-tooltip="Network contains {{network.nbDoc}} documents">
+                                                        <span class="badge-number">{{network.nbDoc}} </span>
+                                                        <span class="badge-title">documents</span>
+                                                        <i class="badge-icon fa fa-file"></i>
+                                                    </dd>
+                                                    <dd ng-if="network.nbComment > 0" class="badge badge-comment" attr.uib-tooltip-append-to-body="true" attr.uib-tooltip="Network contains {{network.nbComment}} comments">
+                                                        <span class="badge-number">{{network.nbComment}}</span>
+                                                        <span class="badge-title">comments</span>
+                                                        <i class="badge-icon fa fa-comment"></i>
+                                                    </dd>
+                                                </dl>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="ui_network-footer">
+                        <div *ngIf="network.viewMode=='' || !network.viewMode">
+                            <div *ngIf="network.requestStatus === 'VALIDATED'" class="ui_network-footer-item">
+                                <div class="ui_network-status">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <span class="ui_network-status-btn btn btn-circle btn-success" disabled>
+                                                <i class="fa fa-unlock-alt"></i>
+                                            </span>
+                                        </div>
+                                        <div class="ui_network-status-title media-body media-middle">Access granted</div>
+                                    </div>
+                                </div>
+                                <div class="text-nowrap">
+                                    <a class="btn btn-link" href="network/{{network.id}}" (click)="setCurrentNetwork(network)">
+                                        <span class="btn-title hidden-xs">Edit network</span>
+                                        <span class="btn-title visible xs">Edit</span>
+                                        <span class="btn-icon fa fa-pencil"></span>
+                                    </a>
+                                    <a href="network/home/{{network.id}}" class="btn btn-link">
+                                        <span class="btn-title">Participate</span>
+                                        <span class="btn-icon fa fa-angle-right"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div *ngIf="network.requestStatus !== 'VALIDATED'" class="ui_network-footer-item">
+                                <div class="ui_manageAccess-network-status">
+                                    <div *ngIf="network.requestStatus === 'REQUESTED'">
+                                        <span class="ui_network-status-title">Already requested</span>
+                                        <span class="ui_network-status-btn btn btn-circle btn-warning" disabled>
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                    </div>
+                                    <div *ngIf="network.requestStatus !== 'REQUESTED'">
+                                        <a *ngIf="network.isRequestable === true" href=""
+                                           mwl-confirm
+                                           message="'Do you confirm you want to request access to this network ?'"
+                                           on-confirm="sendRequestAccess(network);"
+                                           template-url="confirm_popover.html"
+                                           class=" ui_network-status-btn btn btn-warning">
+                                            <span class="btn-title">Request access</span>
+                                            <span class="btn-icon fa fa-lock"></span>
+                                        </a>
+                                        <a *ngIf="network.isRequestable.route" href="{{network.isRequestable.route}}" class="ui_network-status-btn btn btn-warning">
+                                            <span class="btn-title">Request access</span>
+                                            <span class="btn-icon fa fa-lock"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="text-nowrap">
+
+                                    <a class="btn btn-link" href="network/{{network.id}}" *ngIf="network.canManage" ng-click="setCurrentNetwork(network)">
+                                        <span class="btn-title hidden-xs">Edit network</span>
+                                        <span class="btn-title visible xs">Edit</span>
+                                        <span class="btn-icon fa fa-pencil"></span>
+                                    </a>
+
+                                    <a *ngIf="network.read && network.requestStatus !== 'VALIDATED'" href="network/home/{{network.id}}" class="btn btn-link">
+                                        <span class="btn-title">View</span>
+                                        <i class="btn-icon fa fa-angle-right"></i>
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div *ngIf="network.viewMode === 'request'" class="media">
+                            <div class="media-body media-middle">
+                                Do you confirm you want to request access to this network ?
+                            </div>
+                            <div class="media-left text-nowrap">
+                                <a href="" class="btn btn-info" ng-click="sendRequestAccess(network);" button-spinner="loading" spinning-icon="fa fa-circle-o-notch fa-spin btn-icon" ng-disabled="loading">Yes</a>
+                                <a href="" class="btn btn-info" ng-click="cancelRequestAccess(network);">No</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="ui_network ui_network-bordered  ui_fade" [hidden]="category.optionNbNetworkVisible != '' && (!category.allVisible) && category.networks.length > category.optionNbNetworkVisible">
+                    <div class="media ui_network-media">
+                        <a href="" ng-click="category.allVisible = true;">Show all networks ... </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

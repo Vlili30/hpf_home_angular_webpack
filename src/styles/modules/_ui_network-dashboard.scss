@@ -1,0 +1,71 @@
+/* 
+-----------------------------------
+	NETWORK DASHBOARD
+-----------------------------------
+*/
+
+$componentClass: ui_network-dashboard;
+
+.#{$componentClass}-list {
+	padding: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+
+	@media(max-width: 767px) {
+		padding: 5px;
+	}
+	
+}
+
+.#{$componentClass} {
+	flex-basis: 33.3333333%;
+	min-width: 300px;
+	flex-grow: 1;
+	padding: 10px;
+
+	@media(max-width: 767px) {
+		padding: 5px;
+	}
+
+	&-item {
+		margin-top: 10px;
+		padding: 15px;
+
+		.media {
+
+			&-thumbnail-cover {
+				width: 100px;
+				height: 100px;
+				background-size: cover;
+				margin-bottom: 5px;
+			}
+
+			&-title {
+
+				font-size: 110%;
+
+				.#{$componentClass}-event & {
+					color: darken($event-color, 3%);
+				}
+
+			}
+
+			&-description {
+				text-align: justify;
+			}
+
+			&-pic {
+				margin-bottom: 5px;
+			}
+
+			&-details {
+
+				.#{$componentClass}-event & {
+					color: lighten($event-color, 2%);
+				}
+			}
+
+		}
+	}
+}

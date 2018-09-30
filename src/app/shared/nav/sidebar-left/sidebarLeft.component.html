@@ -1,0 +1,88 @@
+<div id="ui_sidebar-left" class="ui_sidebar ui_sidebar-left">
+
+    <h2 class="ui_sidebar-heading">
+        <span class="ui_sidebar-title">MAIN MENU</span>
+        <a role="button" class="btn btn-skyblue ui_sidebar-btn-close" [ngClass]="{'is_active': sidebarService.isSidebarOpened}" (click)="toggleSideBar()">
+            <em class="sr-only">Close/open side nav</em>
+            <span class="ui_icon-bar"></span>
+            <span class="ui_icon-bar"></span>
+            <span class="ui_icon-bar"></span>
+        </a>
+    </h2>
+    <div class="ui_sidebar-body">
+
+        <div class="ui_sidebar-item">
+
+            <nav class="ui_sidebar-nav">
+
+                <ul class="ui_sidebar-nav-list">
+
+                    <li class="is_open ui_sidebar-nav-item">
+                        <a href="#">
+                            <i class="fa fa-sitemap nav-item-icon"></i>
+                            <span class="nav-item-title">Networks</span>
+                        </a>
+                        <ul class="ui_sidebar-nav-list">
+                            <li class="ui_sidebar-nav-item">
+                                <a routerLink="/barrel">
+                                    <span class="nav-item-title">Network 1</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="ui_sidebar-nav-item is_active">
+                        <a href="<?php echo $this->url('group/index');?>">
+                            <i class="fa fa-unlock-alt nav-item-icon" aria-hidden="true"></i>
+                            <span class="nav-item-title">Manage Access</span>
+                        </a>
+                    </li>
+
+                    <li class="ui_sidebar-nav-item">
+                        <a href="http://ec.europa.eu/geninfo/legal_notices_en.htm" target="_blank">
+                            <i  class="nav-item-icon fa fa-balance-scale" aria-hidden="true"></i>
+                            <span class="nav-item-title">Legal Notice</span>
+                        </a>
+                    </li>
+                    <li class="ui_sidebar-nav-item">
+                        <a href="#help-modal" data-toggle="modal">
+                            <i class="nav-item-icon fa fa-envelope" aria-hidden="true"></i>
+                            <span class="nav-item-title">Support/Help</span>
+                        </a>
+                    </li>
+
+                    <li class="ui_sidebar-nav-item">
+                        <a href="<?php echo $this->url('subscription/streamview');?>">
+                            <i class="nav-item-icon fa fa-bell" aria-hidden="true"></i>
+                            <span class="nav-item-title">Subscriptions</span>
+                        </a>
+                    </li>
+                    <li class="ui_sidebar-nav-item">
+                        <a href="<?php echo $this->url('profile/update');?>">
+                            <i class="nav-item-icon fa fa-user" aria-hidden="true"></i>
+                            <span class="sr-only">User profile of </span>
+                            <span class="nav-item-title">Vincent Lisoir</span>
+                        </a>
+                    </li>
+                    <li class="ui_sidebar-nav-item">
+                        <a href="<?php echo $this->url('cas/logout');?>">
+                            <i class="nav-item-icon fa fa-power-off" aria-hidden="true"></i>
+                            <span class="nav-item-title">Logout</span>
+                        </a>
+                    </li>
+                    <li class="ui_sidebar-nav-item">
+                        <a href="<?php echo $this->url('cas/login');?>">
+                            <i class="nav-item-icon fa fa-power-off" aria-hidden="true"></i>
+                            <span class="nav-item-title">Login</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,94 @@
+/*
+-----------------------------------
+	VARIABLES
+-----------------------------------
+*/
+
+@import "ui/_ui_variables.scss";
+/*
+-----------------------------------
+	LIBRARIES
+-----------------------------------
+*/
+
+@import "~font-awesome/scss/font-awesome.scss";
+@import "~bootstrap/scss/bootstrap.scss";
+/*
+-----------------------------------
+	COMPONENTS
+-----------------------------------
+*/
+
+@import "ui/_ui_type.scss";
+@import "ui/_ui_grid.scss";
+
+@import "ui/_ui_table.scss";
+@import "ui/_ui_badges.scss";
+@import "ui/_ui_buttons.scss";
+@import "ui/_ui_button-groups.scss";
+@import "ui/_ui_forms.scss";
+@import "ui/_ui_input-groups.scss";
+@import "ui/_ui_labels.scss";
+@import "ui/_ui_list-groups.scss";
+@import "ui/_ui_progress-bars.scss";
+@import "ui/_ui_panels.scss";
+@import "ui/_ui_pagination.scss";
+@import "ui/_ui_alert.scss";
+@import "ui/_ui_avatar.scss";
+@import "ui/_ui_nav-tabs.scss";
+
+@import "ui/_ui_content-section.scss";
+@import "ui/_ui_modal.scss";
+@import "ui/_ui_datepicker.scss";
+@import "ui/_ui_timepicker.scss";
+@import "ui/_ui_lightbox.scss";
+@import "ui/_ui_thumbnail.scss";
+@import "ui/_ui_media.scss";
+@import "ui/_ui_dropdown.scss";
+@import "ui/_ui_popover.scss";
+@import "ui/_ui_sortable.scss";
+
+@import "ui/_ui_css-loader.scss";
+
+
+/*
+-----------------------------------
+	MODULES
+-----------------------------------
+*/
+
+@import "modules/_ui_breadcrumb.scss";
+@import "modules/_ui_poll.scss";
+@import "modules/_ui_calendar.scss";
+@import "modules/_ui_networks.scss";
+@import "modules/_ui_network-dashboard.scss";
+@import "modules/_ui_subforums.scss";
+@import "modules/_ui_topics.scss";
+@import "modules/_ui_comments.scss";
+@import "modules/_ui_tree-view.scss";
+@import "modules/_ui_resources.scss";
+@import "modules/_ui_dropzone.scss";
+@import "modules/_ui_bulkupload.scss";
+@import "modules/_ui_bma.scss";
+@import "modules/_ui_users-list.scss";
+@import "modules/_ui_user-profile-card.scss";
+@import "modules/_ui_news.scss";
+@import "modules/_ui_eu-sante-help.scss";
+/*
+-----------------------------------
+	ANIMATIONS
+-----------------------------------
+*/
+
+@import "ui/_ui_animations.scss";
+/*
+-----------------------------------
+	LAYOUT
+-----------------------------------
+*/
+@import "app/_ui_ec-banner.scss";
+@import "app/_ui_top-navbar.scss";
+@import "app/_ui_sidebar.scss";
+@import "app/_ui_content-nav-tabs.scss";
+@import "app/_ui_layout.scss";
+@import "ui/_ui_utilities.scss";

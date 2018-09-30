@@ -1,0 +1,39 @@
+/* 
+-----------------------------------
+	BREADCRUMB
+-----------------------------------
+*/
+
+.ui_breadcrumb {
+
+	> ul {
+		display: block;
+		padding: 0;
+		margin: 0;
+		
+		> li {
+			display: inline;
+			color: #4a6879;
+			
+			&::after {
+				@include fa-icon();
+				content: "\f105";
+				color: #a0bac8;
+				margin: 0 3px;
+			}
+
+			&:last-child::after {
+				content: "";
+			}
+
+			> a {
+				color: $skyblue;
+			}
+
+		}
+	}
+}
+
+.ui_navbar-breadcrumb.ui_breadcrumb {
+	font-size: 90%;
+}

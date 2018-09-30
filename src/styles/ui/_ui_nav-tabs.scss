@@ -1,0 +1,72 @@
+/* 
+-----------------------------------
+	NAV TABS
+-----------------------------------
+*/
+
+.nav-pills {
+
+	display: flex;
+
+	&-item {
+
+		&-rose {
+
+			&.active > a,
+			&:active > a,
+			&:hover > a {
+				background-color: $rose-color !important;
+				color: #fff;
+			}
+		}
+
+		&-green {
+
+			&.active > a,
+			&:active > a,
+			&:hover > a {
+				background-color: $green-color !important;
+				color: #fff;
+			}
+		}
+
+		&-purple {
+
+			&.active > a,
+			&:active > a,
+			&:hover > a {
+				background-color: $purple-color !important;
+				color: #fff;
+			}
+		}
+
+		&-blue {
+
+			&.active > a,
+			&:active > a,
+			&:hover > a {
+				background-color: $blue-color !important;
+				color: #fff;
+			}
+		}
+
+		.badge {
+			margin-right: 5px;
+		}
+
+		&.active,
+		&:active,
+		&:hover {
+
+			.badge {
+				@include box-shadow(0 0 0 2px #fff);
+			}
+		}
+
+	}
+}
+
+
+	
+	
+	

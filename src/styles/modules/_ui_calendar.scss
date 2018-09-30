@@ -1,0 +1,305 @@
+/* 
+-----------------------------------
+	CALENDAR
+-----------------------------------
+*/
+
+.ui_calendar {
+
+	@media(max-width: 480px) {
+		font-size: 90%;
+	}
+
+	background-color: #fff;
+
+	&-heading {
+		background-color: $event-color;
+		padding: 10px 15px 10px 15px;
+		min-height: 60px;
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		align-items: center;
+		color: #fff;
+
+		@media(max-width: 480px) {
+			font-size: 100%;
+			padding: 8px 5px;
+			min-height: 50px;
+		}
+
+		.btn {
+
+			border-radius: 100px;
+
+			@media(max-width: 480px) {
+				padding: 4px 7px;
+				font-size: 100%;
+			}
+
+			&-title {
+				@media(max-width: 767px) {
+					display: none;
+					margin: 0;
+				}
+			}
+
+			&-icon {
+				@media(max-width: 767px) {
+					margin: 0;
+				}
+			}
+		}
+
+		.ui_calendar-nav {
+			display: flex;
+			align-items: center;
+			flex-grow: 1;
+			justify-content: center;
+
+			> * {
+				margin: 0 10px;
+				text-align: center;
+
+				@media(max-width: 480px) {
+					margin: 0 3px;
+				}
+			
+				
+				
+			}
+
+			> .btn {
+
+			}
+		}
+
+		.ui_calendar-select-view {
+
+			@media(max-width: 767px) {
+
+			}
+		
+			.btn {
+				border-radius: 50px;
+
+				&.active {
+					box-shadow: none;
+				}
+			}
+		}
+
+		.ui_calendar-today {
+			margin-left: auto;
+			flex-basis: 250px;
+			text-align: right;
+
+			@media(max-width: 800px) {
+				flex-basis: auto;
+			}
+		}
+
+	}
+
+	.cal-month-day {
+
+	}
+
+	.cal-row-head,
+	.cal-week-box .cal-row-head {
+		background-color: darken($event-color, 3%);
+		color: #fff;
+
+		&:hover {
+			background-color: darken($event-color, 3%);
+			color: #fff;
+		}
+
+		.cal-cell1,
+		.cal-cell {
+			font-weight: normal !important;
+
+			&:hover {
+				background-color: darken($event-color, 6%);
+			}
+		}
+
+		.cal-day-today {
+			background-color: darken($event-color, 3%);
+
+			span[data-cal-date] {
+				color: #fff;
+			}
+		}
+
+		span[data-cal-date] {
+			margin: 0;
+		}
+
+	}
+
+	.cal-day-today {
+		background-color: lighten($event-color, 40%);
+
+		span[data-cal-date] {
+			color: darken($event-color, 3%);
+		}
+	}
+
+	.cal-events-num {
+		background-color: darken($event-color, 3%);
+		min-width: 20px;
+		min-height: 20px;
+		line-height: 14px;
+	}
+
+	.cal-day-tick {
+		border-radius: 0 0 50px 50px;
+		background-color: darken($event-color, 3%);
+		color: #fff;
+		border: 0;
+		font-size: 0.7em;
+		padding: 1px 1px 2px;
+		top: 100%;
+		bottom: auto;
+		margin-right: -14px;
+		margin-top: -3px;
+
+		i {
+			margin-left: 1px;
+		}
+	}
+
+	.cal-slide-content {
+		background-color: lighten($bluegrey-light, 3%);
+		box-shadow: 0 3px rgba(0, 0, 0, 0.05), inset 0 -1px darken($bluegrey-light, 7%);
+		color:$text-color;
+
+		.event-item {
+			color: $link-color;
+			top: 0;
+		}
+
+	}
+	
+	.cal-event-list {
+	
+		padding:0;
+		margin-top:-1px;
+		border:1px solid darken($bluegrey-light, 7%);
+	
+		ul {
+			display:flex;
+			align-items:stretch;
+			flex-wrap:wrap;
+			
+			
+			li {
+				flex-grow: 1;
+				padding: 20px 15px;
+				border:1px solid darken($bluegrey-light, 7%);
+				margin:-0.5px;
+				position: relative;
+				top: -0.5px;
+				
+				 .event-item {
+
+				} 
+			}
+		}
+		
+	}
+	
+	.event {
+		box-shadow:none;
+		background-color:$event-color;
+		border:0;
+	}
+
+	.events-list {
+
+		margin: 0 5px 5px 9px;
+
+	}
+
+	.cal-month-box,
+	.cal-week-box,
+	.cal-year-box {
+		border: 0;
+
+		.day-highlight,
+		.day-highlight:hover {
+			background-color: lighten(#ddd, 10%);
+		}
+
+	}
+
+	.cal-month-box,
+	.cal-year-box {
+		.cal-day-weekend span[data-cal-date] {
+			color: darken($event-color, 10%);
+		}
+	}
+
+	.cal-week-box {
+		.cal-day-weekend span[data-cal-date] {
+			color: #fff;
+		}
+	}
+
+	.cal-day-box .cal-day-hour-part {
+		padding-top: 4px;
+	}
+
+	mwl-calendar-month {
+
+		margin: 0 -1px;
+		display: block;
+
+		.cal-month-box {
+
+			[class*=cal-cell] {
+
+				@media (max-width: 479px) {
+					min-height: 80px;
+				}
+			}
+
+		}
+
+		.cal-month-day {
+
+			@media (max-width: 479px) {
+				height: 80px;
+			}
+
+			.cal-events-num {
+
+				@media (max-width: 479px) {
+					min-width: 18px;
+					min-height: 18px;
+					margin-top: 2px;
+					margin-left: 2px;
+					display: none;
+				}
+			}
+
+			span[data-cal-date] {
+
+				@media (max-width: 479px) {
+					margin-top: 2px;
+					margin-right: 2px;
+				}
+			}
+
+			.events-list {
+				@media (max-width: 479px) {
+					margin: 0 2px 3px 0px;
+				}
+			}
+
+		}
+	
+	}
+
+}

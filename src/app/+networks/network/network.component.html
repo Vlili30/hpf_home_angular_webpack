@@ -1,0 +1,101 @@
+<div class="spinner spinner-link" *ngIf="loading">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+</div>
+
+<div class="ui_network-dashboard-list" *ngIf="!loading">
+
+    <!-- LATEST NEWS -->
+    <div class="ui_network-dashboard" *ngIf="network.articles.length > 0">
+        <header class="ui_content-section-heading">
+            <h3 class="ui_content-section-heading-title text-uppercase">LATEST NEWS</h3>
+            <div class="ui_content-section-heading-toolbar">
+                <a class="btn btn-link" href="">
+                    <span class="btn-title">Show all news</span>
+                    <span class="btn-icon fa fa-angle-right" aria-hidden="true"></span>
+                </a>
+            </div>
+        </header>
+        <div *ngFor="let article of network.articles">
+            {{article.id}}
+        </div>
+        <!-- <component-article article="article" *ngFor="let article of items.news"></component-article> -->
+    </div>
+
+    <!-- UPCOMING EVENTS -->
+    <!-- <div class="ui_network-dashboard ui_network-dashboard-event" *ngIf="network.upcoming_events.length > 0">
+
+        <header class="ui_content-section-heading">
+            <h3 class="ui_content-section-heading-title text-uppercase">UPCOMING EVENTS</h3>
+
+            <div class="ui_content-section-heading-toolbar">
+
+                <a class="btn btn-link" href="<?php echo $this->url('event/calendarview') ?>">
+                    <span class="btn-title">Show all events</span>
+                    <span class="btn-icon fa fa-angle-right" aria-hidden="true"></span>
+                </a>
+
+            </div>
+
+        </header> -->
+        <!-- <div class="panel panel-bordered ui_network-dashboard-item" ng-repeat="article in items.upcoming_events">
+
+        </div>
+
+    </div> -->
+
+    <!-- PAST EVENTS -->
+
+    <!-- <div class="ui_network-dashboard ui_network-dashboard-event" *ngIf="items.past_events.length > 0">
+
+        <header class="ui_content-section-heading">
+            <h3 class="ui_content-section-heading-title text-uppercase">PAST EVENTS</h3>
+
+            <div class="ui_content-section-heading-toolbar">
+                <a class="btn btn-link" href="<?php echo $this->url('event/calendarview') ?>">
+                    <span class="btn-title">Show all events</span>
+                    <span class="btn-icon fa fa-angle-right" aria-hidden="true"></span>
+                </a>
+            </div>
+        </header>
+        <div class="panel panel-bordered ui_network-dashboard-item" ng-repeat="article in items.past_events">
+
+        </div>
+
+    </div> -->
+
+    <!-- LATEST DISCUSSIONS -->
+    <!-- <div class="ui_network-list-topics latest-discussions" *ngIf="items.discussions.length > 0">
+        <header class="ui_network-list-topics-heading clearfix">
+            <div class="ui_network-list-topics-actions">
+                <a class="btn btn-info" href="<?php/* echo $this->url('forum')*/ ?>">Show forum
+                    <i class="fa fa-angle-right"></i></a>
+            </div>
+            <div class="ui_network-list-topics-title">
+                <h3>LATEST DISCUSSIONS</h3>
+            </div>
+        </header>
+        <div class="panel panel-bordered ui_network-dashboard-item" ng-repeat="article in items.discussions">
+
+        </div>
+    </div>
+    -->
+
+    <!-- LATEST DOCUMENTS -->
+    <!-- <div class="ui_network-dashboard">
+        <header class="ui_content-section-heading" *ngIf="items.documents.length > 0">
+            <h3 class="ui_content-section-heading-title text-uppercase">LATEST DOCUMENTS</h3>
+
+            <div class="ui_content-section-heading-toolbar">
+                <a class="btn btn-link" href="<?php echo $this->url('document/listview') ?>">
+                    <span class="btn-title">Show all documents</span>
+                    <span class="btn-icon fa fa-angle-right" aria-hidden="true"></span>
+                </a>
+            </div>
+        </header>
+        <div class="panel panel-bordered ui_network-dashboard-item" ng-repeat="article in items.documents">
+
+        </div>
+    </div> -->
+</div>
